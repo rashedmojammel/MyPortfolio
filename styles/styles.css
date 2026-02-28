@@ -1232,3 +1232,651 @@ ul   { list-style: none; }
   background: linear-gradient(90deg, var(--gold), var(--gold-light));
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
+/* ═══════════════════════════════════════════════════
+   NEW FEATURES CSS — Paste at bottom of styles.css
+   1. Loading Screen
+   2. Dark / Light Mode
+   3. Certificates Section
+═══════════════════════════════════════════════════ */
+
+
+/* ══════════════════════════════════════════════════
+   1. LOADING SCREEN
+══════════════════════════════════════════════════ */
+#loader {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+#loader.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loader-inner {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.loader-logo {
+  font-family: var(--font-display);
+  font-size: 5rem;
+  font-weight: 600;
+  color: var(--white);
+  letter-spacing: -0.02em;
+  animation: loader-pulse 1.5s ease-in-out infinite;
+}
+
+.loader-logo em {
+  color: var(--gold);
+  font-style: normal;
+}
+
+@keyframes loader-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.6; transform: scale(0.97); }
+}
+
+.loader-bar {
+  width: 180px;
+  height: 2px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.loader-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  border-radius: 2px;
+  animation: loader-fill 1.8s var(--ease) forwards;
+  box-shadow: 0 0 10px rgba(201,168,76,0.5);
+}
+
+@keyframes loader-fill {
+  0%   { width: 0%; }
+  60%  { width: 75%; }
+  100% { width: 100%; }
+}
+
+.loader-text {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+
+/* ══════════════════════════════════════════════════
+   2. DARK / LIGHT MODE TOGGLE
+══════════════════════════════════════════════════ */
+
+/* Light mode variables */
+body.light-mode {
+  --bg:          #f5f0e8;
+  --bg-card:     #ede8df;
+  --bg-elevated: #e4ddd3;
+  --surface:     #d9d1c5;
+  --border:      rgba(0, 0, 0, 0.08);
+  --border-gold: rgba(151, 110, 30, 0.3);
+
+  --gold:        #a8720e;
+  --gold-light:  #c4900f;
+  --gold-dim:    rgba(168, 114, 14, 0.1);
+
+  --white:       #1a1612;
+  --text:        #3d3830;
+  --muted:       #7a7060;
+}
+
+body.light-mode body::after {
+  opacity: 0.2;
+}
+
+/* Toggle Button */
+#theme-toggle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--border-gold);
+  background: var(--gold-dim);
+  color: var(--gold);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+#theme-toggle:hover {
+  background: var(--gold);
+  color: var(--bg);
+  transform: rotate(20deg);
+  box-shadow: 0 0 16px rgba(201,168,76,0.3);
+}
+
+/* Light mode specific tweaks */
+body.light-mode #header {
+  background: rgba(245, 240, 232, 0.85);
+  border-bottom-color: rgba(0,0,0,0.08);
+}
+
+body.light-mode .p-card,
+body.light-mode .skill-card,
+body.light-mode .edu-item,
+body.light-mode .cert-card {
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+body.light-mode .modal-box {
+  background: var(--bg-elevated);
+}
+
+body.light-mode .home-img-frame img,
+body.light-mode .about-img-frame img {
+  filter: none;
+}
+
+body.light-mode .section-label {
+  color: rgba(0,0,0,0.04);
+}
+
+body.light-mode #particle-canvas {
+  opacity: 0.4;
+}
+
+
+/* ══════════════════════════════════════════════════
+   3. CERTIFICATES SECTION
+══════════════════════════════════════════════════ */
+.certificates {
+  padding: 120px 5vw;
+  background: var(--bg-card);
+  position: relative;
+  overflow: hidden;
+}
+
+.certificates::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.3;
+}
+
+/* Ambient glow */
+.certificates::after {
+  content: '';
+  position: absolute;
+  top: 20%; right: -100px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(201,168,76,0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* Certificate Card */
+.cert-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 30px 28px;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cert-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cert-card:hover {
+  border-color: var(--border-gold);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+}
+
+.cert-card:hover::before { opacity: 1; }
+
+/* Featured card (achievements) */
+.cert-card.featured {
+  border-color: rgba(201,168,76,0.2);
+  background: linear-gradient(135deg, var(--bg-elevated) 0%, rgba(201,168,76,0.04) 100%);
+}
+
+.cert-card.featured::before { opacity: 0.6; }
+
+/* Icon */
+.cert-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: var(--radius-sm);
+  background: var(--gold-dim);
+  border: 1px solid rgba(201,168,76,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  color: var(--gold);
+  margin-bottom: 4px;
+  transition: var(--transition);
+}
+
+.cert-card:hover .cert-icon {
+  background: var(--gold);
+  color: var(--bg);
+  transform: rotate(-5deg) scale(1.05);
+}
+
+/* Year badge */
+.cert-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 3px 10px;
+  border-radius: 100px;
+}
+
+.cert-badge.gold {
+  color: var(--gold);
+  background: var(--gold-dim);
+  border-color: rgba(201,168,76,0.25);
+}
+
+/* Card content */
+.cert-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--white);
+  line-height: 1.25;
+}
+
+.cert-card p {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.75;
+  flex: 1;
+}
+
+/* Issuer */
+.cert-issuer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 0.05em;
+}
+
+.cert-issuer i { color: var(--gold); font-size: 0.75rem; }
+
+/* Link */
+.cert-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  transition: gap 0.2s ease, color 0.2s ease;
+  margin-top: 4px;
+}
+
+.cert-link:hover {
+  gap: 10px;
+  color: var(--gold-light);
+}
+
+/* Shimmer effect on hover (like skill cards) */
+.cert-card {
+  --shimmer-x: 50%;
+  --shimmer-y: 50%;
+}
+
+.cert-card .cert-shimmer {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at var(--shimmer-x) var(--shimmer-y),
+    rgba(201,168,76,0.06) 0%,
+    transparent 60%
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: inherit;
+}
+
+.cert-card:hover .cert-shimmer { opacity: 1; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cert-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .cert-card { padding: 22px 20px; }
+}
+
+/* ══════════════════════════════════════════════════
+   ✦ NEW FEATURE STYLES — Custom Cursor, Progress Bar,
+     Back to Top, Particles, Typing, Glitch, Tilt
+══════════════════════════════════════════════════ */
+
+/* ── SCROLL PROGRESS BAR ── */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+  background-size: 200% 100%;
+  animation: shimmer-bar 2s linear infinite;
+  z-index: 99999;
+  box-shadow: 0 0 10px rgba(201, 168, 76, 0.6);
+  pointer-events: none;
+  border-radius: 0 2px 2px 0;
+}
+
+@keyframes shimmer-bar {
+  0%   { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+
+/* ── CUSTOM CURSOR ── */
+* { cursor: none !important; }
+
+.cursor-dot {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease, background 0.2s ease;
+  box-shadow: 0 0 8px rgba(201, 168, 76, 0.8);
+}
+
+.cursor-ring {
+  position: fixed;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid rgba(201, 168, 76, 0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99997;
+  transform: translate(-50%, -50%);
+  transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease, opacity 0.25s ease;
+}
+
+.cursor-dot.hover {
+  width: 10px;
+  height: 10px;
+  background: var(--gold-light);
+  box-shadow: 0 0 14px rgba(201, 168, 76, 1);
+}
+
+.cursor-ring.hover {
+  width: 52px;
+  height: 52px;
+  border-color: var(--gold);
+}
+
+/* Hide custom cursor on touch/mobile */
+@media (hover: none) {
+  * { cursor: auto !important; }
+  .cursor-dot, .cursor-ring { display: none; }
+}
+
+
+/* ── BACK TO TOP BUTTON ── */
+#back-to-top {
+  position: fixed;
+  bottom: 36px;
+  right: 36px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--gold-dim);
+  border: 1px solid var(--border-gold);
+  color: var(--gold);
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: none;
+  z-index: 800;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+#back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+#back-to-top:hover {
+  background: var(--gold);
+  color: var(--bg);
+  box-shadow: 0 0 20px rgba(201, 168, 76, 0.45);
+  transform: translateY(-4px);
+}
+
+
+/* ── PARTICLE CANVAS ── */
+#particle-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Ensure home text sits above canvas */
+.home-text,
+.home-img,
+.home-bg-glow {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* ── TYPING CURSOR ── */
+.type-cursor {
+  display: inline-block;
+  color: var(--gold);
+  font-weight: 300;
+  margin-left: 1px;
+  animation: blink 0.75s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+
+/* ── GLITCH EFFECT ON NAME HOVER ── */
+.home-name {
+  position: relative;
+}
+
+.home-name.glitch {
+  animation: glitch 0.65s steps(2) forwards;
+}
+
+@keyframes glitch {
+  0%   { text-shadow: none; transform: none; }
+  10%  { text-shadow: -3px 0 rgba(255,60,60,0.6), 3px 0 rgba(0,200,255,0.6); transform: skewX(-3deg); }
+  20%  { text-shadow: 3px 0 rgba(255,60,60,0.6), -3px 0 rgba(0,200,255,0.6); transform: skewX(2deg); }
+  30%  { text-shadow: -2px 0 rgba(255,60,60,0.5), 2px 0 rgba(0,200,255,0.5); transform: skewX(0deg) translateX(2px); }
+  40%  { text-shadow: 2px 0 rgba(255,60,60,0.5), -2px 0 rgba(0,200,255,0.5); transform: skewX(-1deg) translateX(-2px); }
+  50%  { text-shadow: -4px 0 rgba(255,60,60,0.4), 4px 0 rgba(0,200,255,0.4); transform: skewX(1deg); }
+  70%  { text-shadow: 2px 0 rgba(255,60,60,0.3), -2px 0 rgba(0,200,255,0.3); transform: translateX(0); }
+  100% { text-shadow: none; transform: none; }
+}
+
+
+/* ── SKILL CARD SHIMMER (cursor-tracked) ── */
+.skill-card {
+  --shimmer-x: 50%;
+  --shimmer-y: 50%;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at var(--shimmer-x) var(--shimmer-y),
+    rgba(201, 168, 76, 0.08) 0%,
+    transparent 55%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.skill-card:hover::after { opacity: 1; }
+
+
+/* ── 3D TILT — project cards ── */
+.p-card {
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+
+/* Restore tilt card on leave (handled by JS but keep base) */
+.p-card:not(:hover) {
+  transition: transform 0.5s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+/* ── PRELOADER ── */
+#loader {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.7s ease, visibility 0.7s ease;
+}
+
+#loader.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loader-inner {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+}
+
+.loader-logo {
+  font-family: var(--font-display);
+  font-size: 5rem;
+  font-weight: 600;
+  color: var(--white);
+  letter-spacing: -0.02em;
+  animation: loader-pulse 1.5s ease-in-out infinite;
+}
+
+.loader-logo em {
+  color: var(--gold);
+  font-style: normal;
+}
+
+@keyframes loader-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.55; transform: scale(0.96); }
+}
+
+.loader-bar {
+  width: 180px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.loader-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  border-radius: 2px;
+  animation: loader-fill 1.8s var(--ease) forwards;
+  box-shadow: 0 0 10px rgba(201, 168, 76, 0.5);
+}
+
+@keyframes loader-fill {
+  0%   { width: 0%; }
+  60%  { width: 78%; }
+  100% { width: 100%; }
+}
+
+.loader-text {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--muted);
+}

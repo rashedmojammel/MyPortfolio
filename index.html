@@ -21,6 +21,18 @@
 <body>
 
   <!-- ═══════════════════════════════════════
+       LOADER
+  ═══════════════════════════════════════ -->
+  <div id="loader">
+    <div class="loader-inner">
+      <div class="loader-logo">R<em>.</em></div>
+      <div class="loader-bar"><div class="loader-fill"></div></div>
+      <p class="loader-text">Loading Portfolio</p>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════
        HEADER
   ═══════════════════════════════════════ -->
   <header id="header">
@@ -33,12 +45,17 @@
       <a href="#about">About</a>
       <a href="#portfolio">Projects</a>
       <a href="#skills">Skills</a>
+      <a href="#certificates">Certificates</a>
       <a href="#contact">Contact</a>
     </nav>
 
     <a href="img/numan resume.pdf" class="top-btn" target="_blank">
       <i class="fas fa-download"></i> Resume
     </a>
+
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">
+      <i class="fas fa-sun"></i>
+    </button>
 
     <div class="menu-toggle" id="menu-toggle">
       <span></span><span></span><span></span>
@@ -62,21 +79,18 @@
       </p>
 
       <div class="social-links">
-      <a href="https://www.facebook.com/share/1DcnFQG8oF/?mibextid=wwXIfr" target="_blank" aria-label="Facebook">
-  <i class="fab fa-facebook-f"></i>
-</a>
-
-<a href="https://www.linkedin.com/in/rashed07?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" aria-label="LinkedIn">
-  <i class="fab fa-linkedin-in"></i>
-</a>
-
-<a href="https://www.instagram.com/rashed_mojammel?igsh=MWg5enBuazhhNG0yMg%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram">
-  <i class="fab fa-instagram"></i>
-</a>
-
-<a href="https://github.com/rashedmojammel" target="_blank" aria-label="GitHub">
-  <i class="fab fa-github"></i>
-</a>
+        <a href="https://www.facebook.com/share/1DcnFQG8oF/?mibextid=wwXIfr" target="_blank" aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/rashed07?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://www.instagram.com/rashed_mojammel?igsh=MWg5enBuazhhNG0yMg%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://github.com/rashedmojammel" target="_blank" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
       </div>
 
       <div class="home-actions">
@@ -223,7 +237,7 @@
           <div class="p-card-play"><i class="fas fa-play"></i></div>
         </div>
         <div class="p-card-body">
-          <span class="p-tag">C++ OpenGL</span>
+          <span class="p-tag">C++ · OpenGL</span>
           <h3>Dhaka City View</h3>
           <p>Cinematic visual project capturing the vibrant life and culture of Dhaka.</p>
           <span class="p-card-cta">View Project <i class="fas fa-arrow-right"></i></span>
@@ -265,7 +279,7 @@
           <div class="p-card-play"><i class="fas fa-play"></i></div>
         </div>
         <div class="p-card-body">
-          <span class="p-tag">Html,Css,js,PHP,MySql</span>
+          <span class="p-tag">HTML · CSS · JS · PHP · MySQL</span>
           <h3>Hostel Management System</h3>
           <p>Complete system for room booking, fee tracking and student management.</p>
           <span class="p-card-cta">View Project <i class="fas fa-arrow-right"></i></span>
@@ -346,6 +360,102 @@
 
 
   <!-- ═══════════════════════════════════════
+       CERTIFICATES
+  ═══════════════════════════════════════ -->
+  <section class="certificates" id="certificates">
+    <div class="section-label">Certs</div>
+
+    <div class="section-head" data-reveal>
+      <p class="section-eyebrow">Credentials</p>
+      <h2 class="section-title">Certificates &amp; <em>Achievements</em></h2>
+      <p class="section-sub">Verified learning milestones and recognized accomplishments</p>
+    </div>
+
+    <div class="cert-grid">
+
+      <!-- Certificate 1 -->
+      <div class="cert-card" data-reveal data-delay="0">
+        <div class="cert-shimmer"></div>
+        <span class="cert-badge gold">2024</span>
+        <div class="cert-icon"><i class="fab fa-python"></i></div>
+        <h3>Python for Everybody</h3>
+        <p>Completed an in-depth specialization covering Python fundamentals, data structures, web scraping, databases, and data visualization.</p>
+        <div class="cert-issuer">
+          <i class="fas fa-award"></i> Coursera · University of Michigan
+        </div>
+        <a href="#" target="_blank" class="cert-link">View Certificate <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <!-- Certificate 2 -->
+      <div class="cert-card" data-reveal data-delay="80">
+        <div class="cert-shimmer"></div>
+        <span class="cert-badge gold">2024</span>
+        <div class="cert-icon"><i class="fas fa-globe"></i></div>
+        <h3>The Web Developer Bootcamp</h3>
+        <p>Mastered full-stack web development covering HTML, CSS, JavaScript, Node.js, Express, and MongoDB through hands-on projects.</p>
+        <div class="cert-issuer">
+          <i class="fas fa-award"></i> Udemy · Colt Steele
+        </div>
+        <a href="#" target="_blank" class="cert-link">View Certificate <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <!-- Certificate 3 -->
+      <div class="cert-card" data-reveal data-delay="160">
+        <div class="cert-shimmer"></div>
+        <span class="cert-badge gold">2023</span>
+        <div class="cert-icon"><i class="fas fa-microchip"></i></div>
+        <h3>IoT and Embedded Systems</h3>
+        <p>Learned to build smart IoT devices using Arduino, sensors, and wireless communication protocols for real-world automation.</p>
+        <div class="cert-issuer">
+          <i class="fas fa-award"></i> AIUB · Department of EEE
+        </div>
+        <a href="#" target="_blank" class="cert-link">View Certificate <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <!-- Certificate 4 -->
+      <div class="cert-card" data-reveal data-delay="240">
+        <div class="cert-shimmer"></div>
+        <span class="cert-badge gold">2023</span>
+        <div class="cert-icon"><i class="fas fa-brain"></i></div>
+        <h3>Machine Learning Foundations</h3>
+        <p>Explored supervised and unsupervised learning, neural networks, and practical ML pipelines using Python and scikit-learn.</p>
+        <div class="cert-issuer">
+          <i class="fas fa-award"></i> Coursera · Andrew Ng
+        </div>
+        <a href="#" target="_blank" class="cert-link">View Certificate <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <!-- Certificate 5 -->
+      <div class="cert-card" data-reveal data-delay="320">
+        <div class="cert-shimmer"></div>
+        <span class="cert-badge">2023</span>
+        <div class="cert-icon"><i class="fab fa-git-alt"></i></div>
+        <h3>Git & GitHub Essentials</h3>
+        <p>Gained proficiency in version control, branching strategies, pull requests, and collaborative workflows using Git and GitHub.</p>
+        <div class="cert-issuer">
+          <i class="fas fa-award"></i> LinkedIn Learning
+        </div>
+        <a href="#" target="_blank" class="cert-link">View Certificate <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <!-- Certificate 6 — Featured Achievement -->
+      <div class="cert-card featured" data-reveal data-delay="400">
+        <div class="cert-shimmer"></div>
+        <span class="cert-badge gold">2024</span>
+        <div class="cert-icon"><i class="fas fa-trophy"></i></div>
+        <h3>Dean's List — Academic Excellence</h3>
+        <p>Recognized for outstanding academic performance and consistent high GPA throughout the BSc CSE program at AIUB.</p>
+        <div class="cert-issuer">
+          <i class="fas fa-university"></i> AIUB · Faculty of Engineering
+        </div>
+        <a href="#" target="_blank" class="cert-link">View Details <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
        CONTACT
   ═══════════════════════════════════════ -->
   <section class="contact" id="contact">
@@ -363,31 +473,28 @@
         <ul class="contact-info">
           <li>
             <i class="fas fa-envelope"></i>
-            <a href="mailto:numan.nur.helaly@gmail.com">Rashedmojammel56@gmail.com</a>
+            <a href="mailto:Rashedmojammel56@gmail.com">Rashedmojammel56@gmail.com</a>
           </li>
           <li>
             <i class="fas fa-phone"></i>
-            <a href="tel:+8801619128474">+8801890642735</a>
+            <a href="tel:+8801890642735">+8801890642735</a>
           </li>
         </ul>
 
-      <div class="contact-socials">
-  <a href="https://www.facebook.com/share/1DcnFQG8oF/?mibextid=wwXIfr" target="_blank" aria-label="Facebook">
-    <i class="fab fa-facebook-f"></i>
-  </a>
-
-  <a href="https://www.linkedin.com/in/rashed07" target="_blank" aria-label="LinkedIn">
-    <i class="fab fa-linkedin-in"></i>
-  </a>
-
-  <a href="https://www.instagram.com/rashed_mojammel" target="_blank" aria-label="Instagram">
-    <i class="fab fa-instagram"></i>
-  </a>
-
-  <a href="https://github.com/rashedmojammel" target="_blank" aria-label="GitHub">
-    <i class="fab fa-github"></i>
-  </a>
-</div>
+        <div class="contact-socials">
+          <a href="https://www.facebook.com/share/1DcnFQG8oF/?mibextid=wwXIfr" target="_blank" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/rashed07" target="_blank" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://www.instagram.com/rashed_mojammel" target="_blank" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://github.com/rashedmojammel" target="_blank" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
       </div>
 
       <div class="contact-right" data-reveal data-delay="100">
@@ -440,10 +547,12 @@
         <h2 id="m1-title">Inventory Management System</h2>
         <p>A full-stack web-based Inventory Management System designed to streamline stock tracking, product management, and order processing. Admins can add, update, and delete products, monitor stock levels in real time, and generate detailed reports for business insights.</p>
         <div class="modal-tech">
-          <span><i class="fab fa-csharp"></i>C#</span>
+          <span><i class="fas fa-hashtag"></i> C#</span>
           <span><i class="fas fa-database"></i> MySQL</span>
         </div>
-         <a href="https://github.com/rashedmojammel/Inventory-management-system"target="_blank" class="btn btn-gold"><i class="fab fa-github">Github Repository</i></a>
+        <a href="https://github.com/rashedmojammel/Inventory-management-system" target="_blank" class="btn btn-gold">
+          <i class="fab fa-github"></i> GitHub Repository
+        </a>
         <a href="https://www.youtube.com/watch?v=xPAio-kAbhk" target="_blank" class="btn btn-gold">
           <i class="fab fa-youtube"></i> Watch on YouTube
         </a>
@@ -464,10 +573,12 @@
         <h2 id="m2-title">Dhaka City View</h2>
         <p>A cinematic visual project capturing the vibrant life, architecture, and culture of Dhaka city. Showcasing creative videography and editing skills, highlighting the beauty and energy of Bangladesh's capital from unique and artistic perspectives.</p>
         <div class="modal-tech">
-          <span><i class="fas fa-c++"></i>C++</span>
-          <span><i class="fas fa-Opengl"></i>OpenGL</span>
+          <span><i class="fas fa-microchip"></i> C++</span>
+          <span><i class="fas fa-cube"></i> OpenGL</span>
         </div>
-        <a href="https://github.com/rashedmojammel/Dhaka-city-view-OpenGL"target="_blank" class="btn btn-gold"><i class="fab fa-github">Github Repository</i></a>
+        <a href="https://github.com/rashedmojammel/Dhaka-city-view-OpenGL" target="_blank" class="btn btn-gold">
+          <i class="fab fa-github"></i> GitHub Repository
+        </a>
         <a href="https://www.youtube.com/watch?v=QSno4rXUnew" target="_blank" class="btn btn-gold">
           <i class="fab fa-youtube"></i> Watch on YouTube
         </a>
@@ -492,7 +603,9 @@
           <span><i class="fas fa-wifi"></i> IoT Sensors</span>
           <span><i class="fas fa-code"></i> C++</span>
         </div>
-        <a href="https://github.com/rashedmojammel/Smart-IoT-Plant-Care-System-for-Automated-Irrigation-and-Monitoring"target="_blank" class="btn btn-gold"><i class="fab fa-github">Github Repository</i></a>
+        <a href="https://github.com/rashedmojammel/Smart-IoT-Plant-Care-System-for-Automated-Irrigation-and-Monitoring" target="_blank" class="btn btn-gold">
+          <i class="fab fa-github"></i> GitHub Repository
+        </a>
         <a href="https://www.youtube.com/watch?v=7y2ioy4NYc8" target="_blank" class="btn btn-gold">
           <i class="fab fa-youtube"></i> Watch on YouTube
         </a>
@@ -517,7 +630,9 @@
           <span><i class="fas fa-broadcast-tower"></i> RF Module</span>
           <span><i class="fas fa-drafting-compass"></i> Circuit Design</span>
         </div>
-        <a href="https://github.com/rashedmojammel/Wireless-transmitter-"target="_blank" class="btn btn-gold"><i class="fab fa-github">Github Repository</i></a>
+        <a href="https://github.com/rashedmojammel/Wireless-transmitter-" target="_blank" class="btn btn-gold">
+          <i class="fab fa-github"></i> GitHub Repository
+        </a>
         <a href="https://www.youtube.com/watch?v=8eoZIrefc58" target="_blank" class="btn btn-gold">
           <i class="fab fa-youtube"></i> Watch on YouTube
         </a>
@@ -544,9 +659,9 @@
           <span><i class="fab fa-php"></i> PHP</span>
           <span><i class="fas fa-database"></i> MySQL</span>
         </div>
-        
-       <a href="https://github.com/rashedmojammel/HostelManagementSystem"target="_blank" class="btn btn-gold"><i class="fab fa-github">Github Repository</i></a>
-
+        <a href="https://github.com/rashedmojammel/HostelManagementSystem" target="_blank" class="btn btn-gold">
+          <i class="fab fa-github"></i> GitHub Repository
+        </a>
         <a href="https://www.youtube.com/watch?v=ubyMm3Xg8Ek" target="_blank" class="btn btn-gold">
           <i class="fab fa-youtube"></i> Watch on YouTube
         </a>

@@ -1,3 +1,33 @@
+/* ── LOADER ── */
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const loader = document.getElementById('loader');
+    if (loader) loader.classList.add('hidden');
+  }, 1900);
+});
+
+/* ── THEME TOGGLE ── */
+const themeBtn = document.getElementById('theme-toggle');
+const themeIcon = themeBtn ? themeBtn.querySelector('i') : null;
+
+// Load saved preference
+if (localStorage.getItem('theme') === 'light') {
+  document.body.classList.add('light-mode');
+  if (themeIcon) { themeIcon.classList.remove('fa-sun'); themeIcon.classList.add('fa-moon'); }
+}
+
+if (themeBtn) {
+  themeBtn.addEventListener('click', () => {
+    document.body.classList.toggle('light-mode');
+    const isLight = document.body.classList.contains('light-mode');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    if (themeIcon) {
+      themeIcon.classList.toggle('fa-sun', !isLight);
+      themeIcon.classList.toggle('fa-moon', isLight);
+    }
+  });
+}
+
 
 /* ── SCROLL PROGRESS BAR ── */
 const progressBar = document.createElement('div');
