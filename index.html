@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rashedul Alam — Portfolio</title>
+  <link rel="shortcut icon" type="image/png" href="img/Nh.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="./styles/styles.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════
+       HEADER
+  ═══════════════════════════════════════ -->
+  <header id="header">
+    <a href="#home" class="logo">
+      <span class="logo-text">R<em>.</em></span>
+    </a>
+
+    <nav class="navlist" id="navlist">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#portfolio">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <a href="img/numan resume.pdf" class="top-btn" target="_blank">
+      <i class="fas fa-download"></i> Resume
+    </a>
+
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span><span></span><span></span>
+    </div>
+  </header>
+
+
+  <!-- ═══════════════════════════════════════
+       HOME
+  ═══════════════════════════════════════ -->
+  <section class="home" id="home">
+    <div class="home-bg-glow"></div>
+
+    <div class="home-text" data-reveal>
+      <p class="home-greeting">Hello, I'm</p>
+      <h1 class="home-name">Rashedul<br /><em>Alam</em></h1>
+      <h2 class="home-role">Software Engineer <span>· Bangladesh</span></h2>
+      <p class="home-desc">
+        A passionate and curious learner who loves to explore the world of
+        technology — bridging AI, design, and engineering.
+      </p>
+
+      <div class="social-links">
+        <a href="https://www.facebook.com/numan.helaly/" target="_blank" aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/numan-nur-helaly-aa6734338" target="_blank" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://github.com/numannurhelaly" target="_blank" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.instagram.com/numan.helaly" target="_blank" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+
+      <div class="home-actions">
+        <a href="#about" class="btn btn-outline">About Me</a>
+        <a href="#portfolio" class="btn btn-gold">View Work</a>
+      </div>
+    </div>
+
+    <div class="home-img" data-reveal data-delay="150">
+      <div class="home-img-frame">
+        <img src="./img/formal photo.png" alt="Rashedul Alam" />
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       ABOUT
+  ═══════════════════════════════════════ -->
+  <section class="about" id="about">
+    <div class="section-label">About</div>
+
+    <div class="about-img-wrap" data-reveal>
+      <div class="about-img-frame">
+        <img src="./img/photo_2026-03-01_00-53-22.jpg" alt="Rashedul Alam" />
+      </div>
+    </div>
+
+    <div class="about-content" data-reveal data-delay="100">
+      <p class="section-eyebrow">Who I Am</p>
+      <h2 class="section-title">Software Engineer<br /></h2>
+
+      <p class="about-bio">
+        I'm <strong>Rashedul Alam</strong>, a passionate Software Engineer and CSE student at
+        AIUB. My work bridges the gap between AI, technology, and design — crafting
+        intelligent, scalable solutions that seamlessly integrate aesthetics with
+        functionality. Whether building dynamic web interfaces or AI-driven
+        applications, I believe in human-centered design that enhances automation
+        and redefines user experiences.
+      </p>
+
+      <!-- Tabs -->
+      <div class="tab-bar">
+        <button class="tab-btn active" data-tab="education">Education</button>
+        <button class="tab-btn" data-tab="basicskills">Basic Skills</button>
+      </div>
+
+      <!-- Education Tab -->
+      <div class="tab-panel active" id="tab-education">
+        <ul class="edu-list">
+          <li class="edu-item">
+            <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
+            <div class="edu-body">
+              <strong>B.Sc. in Computer Science & Engineering</strong>
+              <span>American International University-Bangladesh (AIUB)</span>
+              <em>2023 — Present</em>
+            </div>
+          </li>
+          <li class="edu-item">
+            <div class="edu-icon"><i class="fas fa-university"></i></div>
+            <div class="edu-body">
+              <strong>Higher Secondary Certificate (HSC)</strong>
+              <span>Hathazari Govt. College</span>
+              <em>Completed: 2021</em>
+            </div>
+          </li>
+          <li class="edu-item">
+            <div class="edu-icon"><i class="fas fa-school"></i></div>
+            <div class="edu-body">
+              <strong>Secondary School Certificate (SSC)</strong>
+              <span>Wadudia High School</span>
+              <em>Completed: 2019</em>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Basic Skills Tab -->
+      <div class="tab-panel" id="tab-basicskills">
+        <ul class="basic-skills-list">
+          <li>
+            <i class="fas fa-code"></i>
+            <div>
+              <strong>Web Development</strong>
+              <span>Responsive, user-friendly websites & web apps</span>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-brain"></i>
+            <div>
+              <strong>Problem Solving</strong>
+              <span>Analytical thinking with data structures & algorithms</span>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-users"></i>
+            <div>
+              <strong>Leadership</strong>
+              <span>Leading teams and projects effectively</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <a href="img/numan resume.pdf" class="btn btn-gold" target="_blank">
+        <i class="fas fa-file-alt"></i> My Resume
+      </a>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       PORTFOLIO
+  ═══════════════════════════════════════ -->
+  <section class="portfolio" id="portfolio">
+    <div class="section-label">Work</div>
+
+    <div class="section-head" data-reveal>
+      <p class="section-eyebrow">Portfolio</p>
+      <h2 class="section-title">My Amazing <em>Work</em></h2>
+      <p class="section-sub">Crafting Excellence — A Showcase of My Creative Journey</p>
+    </div>
+
+    <div class="portfolio-grid" data-reveal>
+
+      <!-- Card 1 -->
+      <article class="p-card" onclick="openModal('m1')">
+        <div class="p-card-thumb">
+          <img src="https://img.youtube.com/vi/xPAio-kAbhk/hqdefault.jpg" alt="Inventory Management System" />
+          <div class="p-card-play"><i class="fas fa-play"></i></div>
+        </div>
+        <div class="p-card-body">
+          <span class="p-tag">Web App</span>
+          <h3>Inventory Management System</h3>
+          <p>Full-stack system for stock tracking, product management &amp; order processing.</p>
+          <span class="p-card-cta">View Project <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="p-card" onclick="openModal('m2')">
+        <div class="p-card-thumb">
+          <img src="https://img.youtube.com/vi/QSno4rXUnew/hqdefault.jpg" alt="Dhaka City View" />
+          <div class="p-card-play"><i class="fas fa-play"></i></div>
+        </div>
+        <div class="p-card-body">
+          <span class="p-tag">Visual</span>
+          <h3>Dhaka City View</h3>
+          <p>Cinematic visual project capturing the vibrant life and culture of Dhaka.</p>
+          <span class="p-card-cta">View Project <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="p-card" onclick="openModal('m3')">
+        <div class="p-card-thumb">
+          <img src="https://img.youtube.com/vi/7y2ioy4NYc8/hqdefault.jpg" alt="Smart IoT Plant Care" />
+          <div class="p-card-play"><i class="fas fa-play"></i></div>
+        </div>
+        <div class="p-card-body">
+          <span class="p-tag">IoT</span>
+          <h3>Smart IoT Plant Care System</h3>
+          <p>Automated plant monitoring using sensors, microcontrollers and Firebase.</p>
+          <span class="p-card-cta">View Project <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="p-card" onclick="openModal('m4')">
+        <div class="p-card-thumb">
+          <img src="https://img.youtube.com/vi/8eoZIrefc58/hqdefault.jpg" alt="Wireless Transmitter" />
+          <div class="p-card-play"><i class="fas fa-play"></i></div>
+        </div>
+        <div class="p-card-body">
+          <span class="p-tag">Hardware</span>
+          <h3>Wireless Transmitter</h3>
+          <p>RF-based wireless data transmitter built on embedded systems and circuit design.</p>
+          <span class="p-card-cta">View Project <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </article>
+
+      <!-- Card 5 -->
+      <article class="p-card" onclick="openModal('m5')">
+        <div class="p-card-thumb">
+          <img src="https://img.youtube.com/vi/ubyMm3Xg8Ek/hqdefault.jpg" alt="Hostel Management System" />
+          <div class="p-card-play"><i class="fas fa-play"></i></div>
+        </div>
+        <div class="p-card-body">
+          <span class="p-tag">Web App</span>
+          <h3>Hostel Management System</h3>
+          <p>Complete system for room booking, fee tracking and student management.</p>
+          <span class="p-card-cta">View Project <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       SKILLS
+  ═══════════════════════════════════════ -->
+  <section class="skills" id="skills">
+    <div class="section-label">Skills</div>
+
+    <div class="section-head" data-reveal>
+      <p class="section-eyebrow">Expertise</p>
+      <h2 class="section-title">Earned <em>Skills</em></h2>
+      <p class="section-sub">Mastering Expertise — Showcasing Skills with Proficiency</p>
+    </div>
+
+    <div class="skills-grid" data-reveal>
+
+      <div class="skill-card">
+        <div class="skill-card-icon"><i class="fas fa-laptop-code"></i></div>
+        <h3>Frontend</h3>
+        <p>Building responsive, interactive and visually polished user interfaces.</p>
+        <div class="skill-tags">
+          <span><i class="fab fa-html5"></i> HTML</span>
+          <span><i class="fab fa-css3-alt"></i> CSS</span>
+          <span><i class="fab fa-js"></i> JavaScript</span>
+          <span><i class="fab fa-react"></i> Next.js</span>
+          <span><i class="fab fa-bootstrap"></i> Bootstrap</span>
+          <span class="tag-text">Tailwind</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-icon"><i class="fas fa-server"></i></div>
+        <h3>Backend</h3>
+        <p>Developing robust server-side logic, REST APIs and database-driven apps.</p>
+        <div class="skill-tags">
+          <span><i class="fab fa-node-js"></i> Node.js</span>
+          <span><i class="fab fa-php"></i> PHP</span>
+          <span><i class="fas fa-fire"></i> Firebase</span>
+          <span class="tag-text">MongoDB</span>
+          <span><i class="fas fa-database"></i> MySQL</span>
+          <span class="tag-text">.NET</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-icon"><i class="fas fa-microchip"></i></div>
+        <h3>Languages</h3>
+        <p>Strong foundation in object-oriented and systems programming via CSE.</p>
+        <div class="skill-tags">
+          <span><i class="fas fa-microchip"></i> C++</span>
+          <span><i class="fab fa-java"></i> Java</span>
+          <span><i class="fas fa-hashtag"></i> C#</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-icon"><i class="fas fa-tools"></i></div>
+        <h3>Tools</h3>
+        <p>Industry-standard tools for design, version control and productivity.</p>
+        <div class="skill-tags">
+          <span><i class="fab fa-figma"></i> Figma</span>
+          <span class="tag-text">Notion</span>
+          <span><i class="fab fa-git-alt"></i> Git</span>
+          <span><i class="fab fa-github"></i> GitHub</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       CONTACT
+  ═══════════════════════════════════════ -->
+  <section class="contact" id="contact">
+    <div class="section-label">Contact</div>
+
+    <div class="contact-inner">
+      <div class="contact-left" data-reveal>
+        <p class="section-eyebrow">Get In Touch</p>
+        <h2 class="section-title">Let's Work<br /><em>Together</em></h2>
+        <p class="contact-desc">
+          Have a project in mind or want to collaborate? Feel free to reach out —
+          I'd love to hear from you.
+        </p>
+
+        <ul class="contact-info">
+          <li>
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:numan.nur.helaly@gmail.com">Rashedmojammel56@gmail.com</a>
+          </li>
+          <li>
+            <i class="fas fa-phone"></i>
+            <a href="tel:+8801619128474">+8801890642735</a>
+          </li>
+        </ul>
+
+        <div class="contact-socials">
+          <a href="https://www.facebook.com/numan.helaly/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.linkedin.com/in/numan-nur-helaly-aa6734338" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://www.instagram.com/numan.helaly" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://github.com/numannurhelaly" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+
+      <div class="contact-right" data-reveal data-delay="100">
+        <form id="contact-form" name="submit-to-google-sheet">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="Name" placeholder="Rashedul Alam" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Your Email</label>
+            <input type="email" id="email" name="Email" placeholder="hello@example.com" required />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="Message" rows="5" placeholder="Tell me about your project..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-gold submit-btn">
+            <span id="btn-text"><i class="fas fa-paper-plane"></i> Send Message</span>
+          </button>
+          <p id="form-msg"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════ -->
+  <footer class="footer">
+    <p>Designed & Built by <strong>Rashedul Alam</strong> · 2025</p>
+    <p class="footer-sub">Thanks for visiting my portfolio</p>
+  </footer>
+
+
+  <!-- ═══════════════════════════════════════
+       MODALS
+  ═══════════════════════════════════════ -->
+
+  <!-- Modal 1 -->
+  <div class="modal" id="m1" role="dialog" aria-modal="true" aria-labelledby="m1-title">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal('m1')" aria-label="Close"><i class="fas fa-times"></i></button>
+      <div class="modal-video-wrap">
+        <iframe id="m1-iframe" src="" title="Inventory Management System" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="modal-content">
+        <span class="p-tag">Web Application</span>
+        <h2 id="m1-title">Inventory Management System</h2>
+        <p>A full-stack web-based Inventory Management System designed to streamline stock tracking, product management, and order processing. Admins can add, update, and delete products, monitor stock levels in real time, and generate detailed reports for business insights.</p>
+        <div class="modal-tech">
+          <span><i class="fab fa-html5"></i> HTML</span>
+          <span><i class="fab fa-css3-alt"></i> CSS</span>
+          <span><i class="fab fa-js"></i> JavaScript</span>
+          <span><i class="fab fa-php"></i> PHP</span>
+          <span><i class="fas fa-database"></i> MySQL</span>
+        </div>
+        <a href="https://www.youtube.com/watch?v=xPAio-kAbhk" target="_blank" class="btn btn-gold">
+          <i class="fab fa-youtube"></i> Watch on YouTube
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2 -->
+  <div class="modal" id="m2" role="dialog" aria-modal="true" aria-labelledby="m2-title">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal('m2')" aria-label="Close"><i class="fas fa-times"></i></button>
+      <div class="modal-video-wrap">
+        <iframe id="m2-iframe" src="" title="Dhaka City View" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="modal-content">
+        <span class="p-tag">Visual Project</span>
+        <h2 id="m2-title">Dhaka City View</h2>
+        <p>A cinematic visual project capturing the vibrant life, architecture, and culture of Dhaka city. Showcasing creative videography and editing skills, highlighting the beauty and energy of Bangladesh's capital from unique and artistic perspectives.</p>
+        <div class="modal-tech">
+          <span><i class="fas fa-video"></i> Videography</span>
+          <span><i class="fas fa-film"></i> Video Editing</span>
+          <span><i class="fas fa-camera"></i> Photography</span>
+        </div>
+        <a href="https://www.youtube.com/watch?v=QSno4rXUnew" target="_blank" class="btn btn-gold">
+          <i class="fab fa-youtube"></i> Watch on YouTube
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3 -->
+  <div class="modal" id="m3" role="dialog" aria-modal="true" aria-labelledby="m3-title">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal('m3')" aria-label="Close"><i class="fas fa-times"></i></button>
+      <div class="modal-video-wrap">
+        <iframe id="m3-iframe" src="" title="Smart IoT Plant Care" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="modal-content">
+        <span class="p-tag">IoT Project</span>
+        <h2 id="m3-title">Smart IoT Plant Care System</h2>
+        <p>An intelligent IoT-based plant monitoring system that automatically tracks soil moisture, temperature, humidity, and light levels. Sends real-time alerts and automates watering using sensors and microcontrollers — maintaining healthy plants with minimal manual effort.</p>
+        <div class="modal-tech">
+          <span><i class="fas fa-microchip"></i> Arduino</span>
+          <span><i class="fas fa-wifi"></i> IoT Sensors</span>
+          <span><i class="fas fa-code"></i> C++</span>
+          <span><i class="fas fa-fire"></i> Firebase</span>
+        </div>
+        <a href="https://www.youtube.com/watch?v=7y2ioy4NYc8" target="_blank" class="btn btn-gold">
+          <i class="fab fa-youtube"></i> Watch on YouTube
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 4 -->
+  <div class="modal" id="m4" role="dialog" aria-modal="true" aria-labelledby="m4-title">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal('m4')" aria-label="Close"><i class="fas fa-times"></i></button>
+      <div class="modal-video-wrap">
+        <iframe id="m4-iframe" src="" title="Wireless Transmitter" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="modal-content">
+        <span class="p-tag">Hardware Project</span>
+        <h2 id="m4-title">Wireless Transmitter</h2>
+        <p>A hardware engineering project focused on designing and building a wireless data transmitter. Demonstrates core electronics and communication principles, implementing signal transmission between devices without physical connections using RF modules and embedded systems.</p>
+        <div class="modal-tech">
+          <span><i class="fas fa-microchip"></i> Embedded Systems</span>
+          <span><i class="fas fa-broadcast-tower"></i> RF Module</span>
+          <span><i class="fas fa-drafting-compass"></i> Circuit Design</span>
+          <span><i class="fas fa-code"></i> C++</span>
+        </div>
+        <a href="https://www.youtube.com/watch?v=8eoZIrefc58" target="_blank" class="btn btn-gold">
+          <i class="fab fa-youtube"></i> Watch on YouTube
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 5 -->
+  <div class="modal" id="m5" role="dialog" aria-modal="true" aria-labelledby="m5-title">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal('m5')" aria-label="Close"><i class="fas fa-times"></i></button>
+      <div class="modal-video-wrap">
+        <iframe id="m5-iframe" src="" title="Hostel Management System" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="modal-content">
+        <span class="p-tag">Web Application</span>
+        <h2 id="m5-title">Hostel Management System</h2>
+        <p>A comprehensive web-based Hostel Management System for managing student rooms, bookings, fee payments, and complaints. Features an admin dashboard for room allocation, student registration, payment tracking, and automated reporting — simplifying hostel operations end to end.</p>
+        <div class="modal-tech">
+          <span><i class="fab fa-html5"></i> HTML</span>
+          <span><i class="fab fa-css3-alt"></i> CSS</span>
+          <span><i class="fab fa-js"></i> JavaScript</span>
+          <span><i class="fab fa-php"></i> PHP</span>
+          <span><i class="fas fa-database"></i> MySQL</span>
+        </div>
+        <a href="https://www.youtube.com/watch?v=ubyMm3Xg8Ek" target="_blank" class="btn btn-gold">
+          <i class="fab fa-youtube"></i> Watch on YouTube
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="./script/scirpt.js"></script>
+
+</body>
+</html>
