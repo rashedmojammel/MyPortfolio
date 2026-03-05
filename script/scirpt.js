@@ -106,7 +106,7 @@ if (homeSection) {
 /* ── TYPING EFFECT ── */
 const roleEl = document.querySelector('.home-role');
 if (roleEl) {
-  const roles = ['Software Engineer','AI Enthusiast','IoT Developer','Full-Stack Builder','Problem Solver'];
+  const roles = ['Software Engineer','Full-Stack Developer','Problem Solver'];
   let rI = 0, cI = 0, deleting = false;
   function type() {
     const cur = roles[rI];
