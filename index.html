@@ -17,6 +17,9 @@
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="./styles/styles.css" />
+
+  <style>
+  </style>
 </head>
 <body>
 
@@ -48,10 +51,14 @@
       <a href="#certificates">Certificates</a>
       <a href="#contact">Contact</a>
     </nav>
-
-    <a href="img/numan resume.pdf" class="top-btn" target="_blank">
-      <i class="fas fa-download"></i> Resume
-    </a>
+    <div>
+      <a href="img/numan resume.pdf" class="top-btn" target="_blank">
+        <i class="fas fa-download"></i> Resume
+      </a>
+      <a href="./img/Rashed_Mojammel_CV.pdf" class="top-btn" target="_blank">
+        <i class="fas fa-download"></i> CV
+      </a>
+    </div>
 
     <button id="theme-toggle" aria-label="Toggle light/dark mode">
       <i class="fas fa-sun"></i>
@@ -67,9 +74,7 @@
        HOME
   ═══════════════════════════════════════ -->
   <section class="home" id="home">
-    <div class="home-bg-glow">
-    
-    </div>
+    <div class="home-bg-glow"></div>
 
     <div class="home-text" data-reveal>
       <p class="home-greeting">Hello, I'm</p>
@@ -110,6 +115,39 @@
 
 
   <!-- ═══════════════════════════════════════
+       VIDEO CV — placed right after hero
+  ═══════════════════════════════════════ -->
+  <div class="video-cv-section" data-reveal>
+    <div class="video-cv-inner">
+
+      <div class="video-cv-label">
+        <span><i class="fas fa-play-circle" style="margin-right:6px"></i>Video CV</span>
+      </div>
+
+      <div class="video-cv-frame">
+        <div class="video-cv-ratio">
+          <iframe
+            src="https://www.youtube.com/embed/7fRzncCnhaY"
+            title="Rashedul Alam — Video CV"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <div class="video-cv-caption">
+        <p>Watch my Video CV to learn more about my background and goals.</p>
+        <a href="https://www.youtube.com/watch?v=7fRzncCnhaY" target="_blank">
+          Watch on YouTube <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════
        ABOUT
   ═══════════════════════════════════════ -->
   <section class="about" id="about">
@@ -138,11 +176,11 @@
       <div class="tab-bar">
         <button class="tab-btn active" data-tab="education">Education</button>
         <button class="tab-btn" data-tab="basicskills">Basic Skills</button>
-        <button class="tab-btn" data-tab="softskills">soft Skills</button>
+        <button class="tab-btn" data-tab="softskills">Soft Skills</button>
       </div>
 
       <!-- Education Tab -->
-      <div class="tab-panel active" id="tab-education">
+      <!-- <div class="tab-panel active" id="tab-education">
         <ul class="edu-list">
           <li class="edu-item">
             <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
@@ -177,7 +215,53 @@
             </div>
           </li>
         </ul>
+      </div> -->
+      
+<div class="tab-panel active" id="tab-education">
+  <ul class="edu-list">
+
+    <li class="edu-item" onclick="openEduModal('edu1')">
+      <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
+      <div class="edu-body">
+        <strong>B.Sc. in Computer Science &amp; Engineering</strong>
+        <span>American International University-Bangladesh (AIUB)</span>
+        <em>2023 — Present</em>
+        <span class="edu-view-chip"><i class="fas fa-file-pdf"></i> View Document</span>
       </div>
+    </li>
+
+    <li class="edu-item" onclick="openEduModal('edu2')">
+      <div class="edu-icon"><i class="fas fa-university"></i></div>
+      <div class="edu-body">
+        <strong>Higher Secondary Certificate (HSC)</strong>
+        <span>Hathazari Govt. College</span>
+        <em>Completed: 2021</em>
+        <span class="edu-view-chip"><i class="fas fa-file-pdf"></i> View Certificate</span>
+      </div>
+    </li>
+
+    <li class="edu-item" onclick="openEduModal('edu3')">
+      <div class="edu-icon"><i class="fas fa-school"></i></div>
+      <div class="edu-body">
+        <strong>Secondary School Certificate (SSC)</strong>
+        <span>Wadudia High School</span>
+        <em>Completed: 2019</em>
+        <span class="edu-view-chip"><i class="fas fa-file-pdf"></i> View Certificate</span>
+      </div>
+    </li>
+
+    <li class="edu-item" onclick="openEduModal('edu4')">
+      <div class="edu-icon"><i class="fas fa-school"></i></div>
+      <div class="edu-body">
+        <strong>Junior School Certificate (JSC)</strong>
+        <span>Wadudia High School</span>
+        <em>Completed: 2016</em>
+        <span class="edu-view-chip"><i class="fas fa-file-pdf"></i> View Certificate</span>
+      </div>
+    </li>
+
+  </ul>
+</div>
 
       <!-- Basic Skills Tab -->
       <div class="tab-panel" id="tab-basicskills">
@@ -206,64 +290,55 @@
         </ul>
       </div>
 
-      <!-- Soft skills -->
-      <!-- Soft skills -->
-<div class="tab-panel" id="tab-softskills">
-  <ul class="basic-skills-list">
-
-    <li>
-      <i class="fas fa-comments"></i>
-      <div>
-        <strong>Communication</strong>
-        <span>Clear verbal and written communication skills</span>
+      <!-- Soft Skills Tab -->
+      <div class="tab-panel" id="tab-softskills">
+        <ul class="basic-skills-list">
+          <li>
+            <i class="fas fa-comments"></i>
+            <div>
+              <strong>Communication</strong>
+              <span>Clear verbal and written communication skills</span>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-users"></i>
+            <div>
+              <strong>Teamwork</strong>
+              <span>Collaborating effectively with team members</span>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-lightbulb"></i>
+            <div>
+              <strong>Critical Thinking</strong>
+              <span>Analyzing problems and making smart decisions</span>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-clock"></i>
+            <div>
+              <strong>Time Management</strong>
+              <span>Managing tasks efficiently and meeting deadlines</span>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-sync-alt"></i>
+            <div>
+              <strong>Adaptability</strong>
+              <span>Quickly learning and adjusting to new technologies</span>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-handshake"></i>
+            <div>
+              <strong>Work Ethics</strong>
+              <span>Professional attitude and responsibility at work</span>
+            </div>
+          </li>
+        </ul>
       </div>
-    </li>
 
-    <li>
-      <i class="fas fa-users"></i>
-      <div>
-        <strong>Teamwork</strong>
-        <span>Collaborating effectively with team members</span>
-      </div>
-    </li>
-
-    <li>
-      <i class="fas fa-lightbulb"></i>
-      <div>
-        <strong>Critical Thinking</strong>
-        <span>Analyzing problems and making smart decisions</span>
-      </div>
-    </li>
-
-    <li>
-      <i class="fas fa-clock"></i>
-      <div>
-        <strong>Time Management</strong>
-        <span>Managing tasks efficiently and meeting deadlines</span>
-      </div>
-    </li>
-
-    <li>
-      <i class="fas fa-sync-alt"></i>
-      <div>
-        <strong>Adaptability</strong>
-        <span>Quickly learning and adjusting to new technologies</span>
-      </div>
-    </li>
-
-    <li>
-      <i class="fas fa-handshake"></i>
-      <div>
-        <strong>Work Ethics</strong>
-        <span>Professional attitude and responsibility at work</span>
-      </div>
-    </li>
-
-  </ul>
-</div>
-
-
-      <a href="img/numan resume.pdf" class="btn btn-gold" target="_blank">
+      <a href="./img/Rashed_Mojammel_CV.pdf" class="btn btn-gold" target="_blank">
         <i class="fas fa-file-alt"></i> My Resume
       </a>
     </div>
@@ -354,31 +429,22 @@
         </div>
       </article>
 
-
-  
       <!-- Card 6 -->
-
-  <article class="p-card" onclick="openModal('m6')">
-  <div class="p-card-thumb">
-    <img src="https://img.youtube.com/vi/wPyphIlahds/hqdefault.jpg" alt="Payoo Mobile Wallet Web App" />
-    <div class="p-card-play"><i class="fas fa-play"></i></div>
-  </div>
-
-  <div class="p-card-body">
-    <span class="p-tag">HTML · Tailwind CSS · DaisyUI · JavaScript</span>
-    <h3>Payoo — Mobile Wallet Web App</h3>
-
-    <p>
-      A Bangladesh-focused digital wallet web application featuring money transfer,
-      mobile recharge, bill payment, QR transactions, finance tools, and 40+ wallet
-      features built using pure HTML, Tailwind CSS, and JavaScript.
-    </p>
-
-    <span class="p-card-cta">
-      View Project <i class="fas fa-arrow-right"></i>
-    </span>
-  </div>
-</article>
+      <article class="p-card" onclick="openModal('m6')">
+        <div class="p-card-thumb">
+          <img src="https://img.youtube.com/vi/wPyphIlahds/hqdefault.jpg" alt="Payoo Mobile Wallet Web App" />
+          <div class="p-card-play"><i class="fas fa-play"></i></div>
+        </div>
+        <div class="p-card-body">
+          <span class="p-tag">HTML · Tailwind CSS · DaisyUI · JavaScript</span>
+          <h3>Payoo — Mobile Wallet Web App</h3>
+          <p>
+            A Bangladesh-focused digital wallet web application featuring money transfer,
+            mobile recharge, bill payment, QR transactions, finance tools, and 40+ wallet features.
+          </p>
+          <span class="p-card-cta">View Project <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </article>
 
     </div>
   </section>
@@ -505,45 +571,6 @@
         </div>
         <a href="#" target="_blank" class="cert-link">View Certificate <i class="fas fa-arrow-right"></i></a>
       </div>
-
-      <!-- Certificate 4 -->
-      <!-- <div class="cert-card" data-reveal data-delay="240">
-        <div class="cert-shimmer"></div>
-        <span class="cert-badge gold">2023</span>
-        <div class="cert-icon"><i class="fas fa-brain"></i></div>
-        <h3>Machine Learning Foundations</h3>
-        <p>Explored supervised and unsupervised learning, neural networks, and practical ML pipelines using Python and scikit-learn.</p>
-        <div class="cert-issuer">
-          <i class="fas fa-award"></i> Coursera · Andrew Ng
-        </div>
-        <a href="#" target="_blank" class="cert-link">View Certificate <i class="fas fa-arrow-right"></i></a>
-      </div> -->
-
-      <!-- Certificate 5 -->
-      <!-- <div class="cert-card" data-reveal data-delay="320">
-        <div class="cert-shimmer"></div>
-        <span class="cert-badge">2023</span>
-        <div class="cert-icon"><i class="fab fa-git-alt"></i></div>
-        <h3>Git & GitHub Essentials</h3>
-        <p>Gained proficiency in version control, branching strategies, pull requests, and collaborative workflows using Git and GitHub.</p>
-        <div class="cert-issuer">
-          <i class="fas fa-award"></i> LinkedIn Learning
-        </div>
-        <a href="#" target="_blank" class="cert-link">View Certificate <i class="fas fa-arrow-right"></i></a>
-      </div> -->
-
-      <!-- Certificate 6 — Featured Achievement -->
-      <!-- <div class="cert-card featured" data-reveal data-delay="400">
-        <div class="cert-shimmer"></div>
-        <span class="cert-badge gold">2024</span>
-        <div class="cert-icon"><i class="fas fa-trophy"></i></div>
-        <h3>Dean's List — Academic Excellence</h3>
-        <p>Recognized for outstanding academic performance and consistent high GPA throughout the BSc CSE program at AIUB.</p>
-        <div class="cert-issuer">
-          <i class="fas fa-university"></i> AIUB · Faculty of Engineering
-        </div>
-        <a href="#" target="_blank" class="cert-link">View Details <i class="fas fa-arrow-right"></i></a>
-      </div> -->
 
     </div>
   </section>
@@ -763,55 +790,84 @@
     </div>
   </div>
 
-    <!-- Modal 6 -->
-    <div class="modal" id="m6" role="dialog" aria-modal="true" aria-labelledby="m6-title">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeModal('m6')" aria-label="Close">
-      <i class="fas fa-times"></i>
-    </button>
-
-    <div class="modal-video-wrap">
-      <iframe id="m6-iframe"
-        src="https://www.youtube.com/embed/wPyphIlahds"
-        title="Payoo Mobile Wallet Web App"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
-    </div>
-
-    <div class="modal-content">
-      <span class="p-tag">Fintech Web Application</span>
-      <h2 id="m6-title">Payoo — Mobile Wallet Web App</h2>
-
-      <p>
-        Payoo is a feature-rich mobile wallet simulation inspired by Bangladesh
-        fintech apps. The system includes 40+ features such as send money,
-        add money, bill payments, mobile recharge, QR payments, budgeting tools,
-        financial calculators, transport utilities, and transaction history.
-        All data is stored using localStorage, allowing the application to work
-        fully without a backend or database.
-      </p>
-
-      <div class="modal-tech">
-        <span><i class="fab fa-html5"></i> HTML</span>
-        <span><i class="fab fa-css3-alt"></i> Tailwind CSS</span>
-        <span><i class="fas fa-layer-group"></i> DaisyUI</span>
-        <span><i class="fab fa-js"></i> JavaScript</span>
-        <span><i class="fas fa-database"></i> localStorage</span>
+  <!-- Modal 6 -->
+  <div class="modal" id="m6" role="dialog" aria-modal="true" aria-labelledby="m6-title">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal('m6')" aria-label="Close">
+        <i class="fas fa-times"></i>
+      </button>
+      <div class="modal-video-wrap">
+        <iframe id="m6-iframe" src="" title="Payoo Digital Mobile App" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
-
-      <a href="https://github.com/rashedmojammel/Payoo" target="_blank" class="btn btn-gold">
-        <i class="fab fa-github"></i> GitHub Repository
-      </a>
-      <a href="https://easypayoo.netlify.app" target="_blank" class="btn btn-gold">
-        <i class="fa-solid fa-link"></i> Live Link
-      </a>
-
-      <a href="https://youtu.be/wPyphIlahds" target="_blank" class="btn btn-gold">
-        <i class="fab fa-youtube"></i> Watch on YouTube
-      </a>
+      <div class="modal-content">
+        <span class="p-tag">Fintech Web Application</span>
+        <h2 id="m6-title">Payoo — Mobile Wallet Web App</h2>
+        <p>
+          Payoo is a feature-rich mobile wallet simulation inspired by Bangladesh
+          fintech apps. The system includes 40+ features such as send money,
+          add money, bill payments, mobile recharge, QR payments, budgeting tools,
+          financial calculators, transport utilities, and transaction history.
+          All data is stored using localStorage, allowing the application to work
+          fully without a backend or database.
+        </p>
+        <div class="modal-tech">
+          <span><i class="fab fa-html5"></i> HTML</span>
+          <span><i class="fab fa-css3-alt"></i> Tailwind CSS</span>
+          <span><i class="fas fa-layer-group"></i> DaisyUI</span>
+          <span><i class="fab fa-js"></i> JavaScript</span>
+          <span><i class="fas fa-database"></i> localStorage</span>
+        </div>
+        <a href="https://github.com/rashedmojammel/Payoo" target="_blank" class="btn btn-gold">
+          <i class="fab fa-github"></i> GitHub Repository
+        </a>
+        <a href="https://easypayoo.netlify.app" target="_blank" class="btn btn-gold">
+          <i class="fa-solid fa-link"></i> Live Link
+        </a>
+        <a href="https://youtu.be/wPyphIlahds" target="_blank" class="btn btn-gold">
+          <i class="fab fa-youtube"></i> Watch on YouTube
+        </a>
+      </div>
     </div>
+  </div>
+
+  
+<div class="edu-modal-overlay" id="eduModal" role="dialog" aria-modal="true"
+     aria-labelledby="eduModalTitle" onclick="closeEduModalOutside(event)">
+  <div class="edu-modal-box">
+
+    <!-- Header -->
+    <div class="edu-modal-header">
+      <div class="edu-modal-title-wrap">
+        <div class="edu-modal-icon" id="eduModalIcon">
+          <i class="fas fa-graduation-cap"></i>
+        </div>
+        <div>
+          <div class="edu-modal-name" id="eduModalTitle">Document</div>
+          <div class="edu-modal-sub" id="eduModalSub">Institution</div>
+        </div>
+      </div>
+      <button class="edu-modal-close" onclick="closeEduModal()" aria-label="Close">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <!-- PDF Viewer -->
+    <div class="edu-modal-pdf">
+      <iframe id="eduModalIframe" src="" title="Education Document"></iframe>
+    </div>
+
+    <!-- Footer -->
+    <div class="edu-modal-footer">
+      <a id="eduDownloadBtn" href="#" target="_blank" download>
+        <i class="fas fa-download"></i> Download
+      </a>
+      <a id="eduOpenBtn" href="#" target="_blank">
+        <i class="fas fa-external-link-alt"></i> Open in New Tab
+      </a>
+      <span class="edu-modal-year" id="eduModalYear">2023</span>
+    </div>
+
   </div>
 </div>
 

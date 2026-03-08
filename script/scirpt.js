@@ -372,3 +372,70 @@ if (contactForm) {
     }
   });
 }
+
+// UPDATE the pdf paths to your actual files!
+const EDU_DATA = {
+  edu1: {
+    title:  'B.Sc. in Computer Science & Engineering',
+    sub:    'American International University-Bangladesh (AIUB)',
+    icon:   'fas fa-graduation-cap',
+    year:   '2023 – Present',
+    pdf:    './img/AIUB_Certificate.jpg'       // ← update path
+  },
+  edu2: {
+    title:  'Higher Secondary Certificate (HSC)',
+    sub:    'Hathazari Govt. College',
+    icon:   'fas fa-university',
+    year:   '2021',
+    pdf:    './img/Hsc_certificate.jpg'        // ← update path
+  },
+  edu3: {
+    title:  'Secondary School Certificate (SSC)',
+    sub:    'Wadudia High School',
+    icon:   'fas fa-school',
+    year:   '2019',
+    pdf:    './img/Ssc_certifcate.jpg'        // ← update path
+  },
+  edu4: {
+    title:  'Junior School Certificate (JSC)',
+    sub:    'Wadudia High School',
+    icon:   'fas fa-school',
+    year:   '2016',
+    pdf:    './img/Jsc_certificate.jpg'        // ← update path
+  }
+};
+
+function openEduModal(id) {
+  const data = EDU_DATA[id];
+  if (!data) return;
+
+  document.getElementById('eduModalTitle').textContent = data.title;
+  document.getElementById('eduModalSub').textContent   = data.sub;
+  document.getElementById('eduModalYear').textContent  = data.year;
+  document.getElementById('eduModalIcon').innerHTML    = `<i class="${data.icon}"></i>`;
+
+  const iframe = document.getElementById('eduModalIframe');
+  iframe.src = data.pdf;
+
+  document.getElementById('eduDownloadBtn').href = data.pdf;
+  document.getElementById('eduOpenBtn').href     = data.pdf;
+
+  document.getElementById('eduModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeEduModal() {
+  document.getElementById('eduModal').classList.remove('open');
+  document.body.style.overflow = '';
+  setTimeout(() => {
+    document.getElementById('eduModalIframe').src = '';
+  }, 350);
+}
+
+function closeEduModalOutside(e) {
+  if (e.target === document.getElementById('eduModal')) closeEduModal();
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeEduModal();
+});
