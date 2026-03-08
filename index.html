@@ -853,9 +853,11 @@
     </div>
 
     <!-- PDF Viewer -->
-    <div class="edu-modal-pdf">
-      <iframe id="eduModalIframe" src="" title="Education Document"></iframe>
-    </div>
+    <!-- Viewer: img for images, iframe for PDFs -->
+<div class="edu-modal-pdf">
+  <img    id="eduModalImg"    src="" alt="Certificate" style="display:none; width:100%; height:auto; max-height:65vh; object-fit:contain; object-position:top;" />
+  <iframe id="eduModalIframe" src="" title="Education Document" style="display:none;"></iframe>
+</div>
 
     <!-- Footer -->
     <div class="edu-modal-footer">

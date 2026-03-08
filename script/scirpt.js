@@ -380,6 +380,7 @@ const EDU_DATA = {
     sub:    'American International University-Bangladesh (AIUB)',
     icon:   'fas fa-graduation-cap',
     year:   '2023 – Present',
+    type: 'image' ,
     pdf:    './img/AIUB_Certificate.jpg'       // ← update path
   },
   edu2: {
@@ -387,6 +388,7 @@ const EDU_DATA = {
     sub:    'Hathazari Govt. College',
     icon:   'fas fa-university',
     year:   '2021',
+    type: 'image' ,
     pdf:    './img/Hsc_certificate.jpg'        // ← update path
   },
   edu3: {
@@ -394,6 +396,7 @@ const EDU_DATA = {
     sub:    'Wadudia High School',
     icon:   'fas fa-school',
     year:   '2019',
+    type: 'image' ,
     pdf:    './img/Ssc_certifcate.jpg'        // ← update path
   },
   edu4: {
@@ -401,6 +404,7 @@ const EDU_DATA = {
     sub:    'Wadudia High School',
     icon:   'fas fa-school',
     year:   '2016',
+    type: 'image' ,
     pdf:    './img/Jsc_certificate.jpg'        // ← update path
   }
 };
@@ -414,11 +418,23 @@ function openEduModal(id) {
   document.getElementById('eduModalYear').textContent  = data.year;
   document.getElementById('eduModalIcon').innerHTML    = `<i class="${data.icon}"></i>`;
 
+  const img    = document.getElementById('eduModalImg');
   const iframe = document.getElementById('eduModalIframe');
-  iframe.src = data.pdf;
 
-  document.getElementById('eduDownloadBtn').href = data.pdf;
-  document.getElementById('eduOpenBtn').href     = data.pdf;
+  if (data.type === 'image') {
+    img.src = data.file || data.pdf;
+    img.style.display = 'block';
+    iframe.src = '';
+    iframe.style.display = 'none';
+  } else {
+    iframe.src = data.file || data.pdf;
+    iframe.style.display = 'block';
+    img.src = '';
+    img.style.display = 'none';
+  }
+
+  document.getElementById('eduDownloadBtn').href = data.file || data.pdf;
+  document.getElementById('eduOpenBtn').href     = data.file || data.pdf;
 
   document.getElementById('eduModal').classList.add('open');
   document.body.style.overflow = 'hidden';

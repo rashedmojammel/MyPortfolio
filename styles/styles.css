@@ -2015,6 +2015,8 @@ body.light-mode #particle-canvas {
 .edu-item:hover .edu-view-chip { opacity: 1; }
 
 /* ── Education Modal Overlay ─────────────────────────────────── */
+
+
 .edu-modal-overlay {
   position: fixed;
   inset: 0;
