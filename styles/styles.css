@@ -2169,6 +2169,318 @@ body.light-mode #particle-canvas {
   color: rgba(196,160,79,0.4);
 }
 
+/* ══════════════════════════════════════════════════
+   HOBBIES SECTION — Complete
+══════════════════════════════════════════════════ */
+.hobbies {
+  padding: 120px 5vw;
+  position: relative;
+  overflow: hidden;
+}
+
+.hobbies-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* ── Base Hobby Card ─────────────────────────────── */
+.hobby-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  text-align: center;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.hobby-card::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hobby-card:hover {
+  border-color: var(--border-gold);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+  background: var(--bg-elevated);
+}
+.hobby-card:hover::before { opacity: 1; }
+
+.hobby-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--gold-dim);
+  border: 1px solid rgba(201,168,76,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: var(--gold);
+  margin: 0 auto;
+  transition: var(--transition);
+}
+
+.hobby-card:hover .hobby-icon {
+  background: var(--gold);
+  color: var(--bg);
+  transform: scale(1.1) rotate(-8deg);
+  box-shadow: 0 8px 24px rgba(201,168,76,0.35);
+}
+
+.hobby-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--white);
+}
+
+.hobby-card > p {
+  font-size: 0.84rem;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+/* ── Wide Card ───────────────────────────────────── */
+.hobby-card--wide {
+  grid-column: 1 / -1;
+  text-align: left;
+}
+
+.hobby-card--wide .hobby-icon { margin: 0; flex-shrink: 0; }
+
+.hobby-card-top {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.hobby-sub {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.8;
+  margin-top: 3px;
+}
+
+.hobby-card--wide > p {
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.9;
+  text-align: left;
+}
+.hobby-card--wide > p strong { color: var(--white); }
+
+/* ── Movie / General Tags ────────────────────────── */
+.hobby-game-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.hobby-game-tags span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: var(--gold-dim);
+  border: 1px solid rgba(201,168,76,0.22);
+  padding: 5px 14px;
+  border-radius: 100px;
+}
+
+/* ── Games Grid ──────────────────────────────────── */
+.hobby-games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 4px;
+}
+
+.game-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.game-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.game-card:has(.pubg-icon)::before  { background: linear-gradient(90deg, #e8a020, transparent); }
+.game-card:has(.forza-icon)::before { background: linear-gradient(90deg, #1e90ff, transparent); }
+
+.game-card:hover {
+  border-color: var(--border-gold);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+}
+.game-card:hover::before { opacity: 1; }
+
+.game-card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.game-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  transition: var(--transition);
+}
+/* ── Game Icon Colors ────────────────────────────── */
+.pubg-icon  { background: rgba(232,160,32,0.12);  border: 1px solid rgba(232,160,32,0.3);  color: #e8a020; }
+.forza-icon { background: rgba(30,144,255,0.12);  border: 1px solid rgba(30,144,255,0.3);  color: #1e90ff; }
+.pes-icon   { background: rgba(0,200,100,0.12);   border: 1px solid rgba(0,200,100,0.3);   color: #00c864; }
+.gta-icon   { background: rgba(255,50,50,0.12);   border: 1px solid rgba(255,50,50,0.3);   color: #ff3232; }
+.cod-icon   { background: rgba(180,140,60,0.12);  border: 1px solid rgba(180,140,60,0.3);  color: #b48c3c; }
+
+.game-card:hover .pubg-icon  { background: #e8a020; color: #000; }
+.game-card:hover .forza-icon { background: #1e90ff; color: #fff; }
+.game-card:hover .pes-icon   { background: #00c864; color: #fff; }
+.game-card:hover .gta-icon   { background: #ff3232; color: #fff; }
+.game-card:hover .cod-icon   { background: #b48c3c; color: #fff; }
+
+.game-card:has(.pubg-icon)::before  { background: linear-gradient(90deg, #e8a020, transparent); }
+.game-card:has(.forza-icon)::before { background: linear-gradient(90deg, #1e90ff, transparent); }
+.game-card:has(.pes-icon)::before   { background: linear-gradient(90deg, #00c864, transparent); }
+.game-card:has(.gta-icon)::before   { background: linear-gradient(90deg, #ff3232, transparent); }
+.game-card:has(.cod-icon)::before   { background: linear-gradient(90deg, #b48c3c, transparent); }
+
+.game-card h4 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 2px;
+}
+
+.game-genre {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.game-card p { font-size: 0.85rem; color: var(--text); line-height: 1.85; }
+.game-card p strong { color: var(--white); }
+
+.game-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.game-skills span {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: var(--gold-dim);
+  border: 1px solid rgba(201,168,76,0.2);
+  padding: 4px 10px;
+  border-radius: 100px;
+}
+
+/* ── Photography Mini Grid ───────────────────────── */
+.hobby-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.hobby-photo-grid img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--border-gold);
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: grayscale(20%);
+}
+
+.hobby-photo-grid img:hover {
+  transform: scale(1.04);
+  filter: grayscale(0);
+}
+
+.hobby-photo-placeholder {
+  aspect-ratio: 1;
+  border-radius: 8px;
+  border: 1px dashed rgba(201,168,76,0.3);
+  background: var(--gold-dim);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 0.65rem;
+  color: rgba(201,168,76,0.5);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.hobby-photo-placeholder i { font-size: 1.2rem; }
+
+/* ── Responsive ──────────────────────────────────── */
+@media (max-width: 1024px) {
+  .hobbies-grid { grid-template-columns: repeat(2, 1fr); }
+  .hobby-card--wide { grid-column: 1 / -1; }
+}
+
+@media (max-width: 768px) {
+  .hobbies-grid { grid-template-columns: repeat(2, 1fr); }
+  .hobby-games-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .hobbies-grid { grid-template-columns: 1fr; }
+  .hobby-card { padding: 24px 20px; }
+}
+
 @media (max-width: 600px) {
   .edu-modal-pdf iframe { min-height: 380px; }
 }
