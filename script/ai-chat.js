@@ -85,6 +85,36 @@ const amaMessages    = document.getElementById('ama-messages');
 const amaInput       = document.getElementById('ama-input');
 const amaSendBtn     = document.getElementById('ama-send-btn');
 const amaSuggestions = document.getElementById('ama-suggestions');
+const aiFab          = document.getElementById('ai-fab');
+const aiPopup        = document.getElementById('ai-popup');
+const aiPopupClose   = document.getElementById('ai-popup-close');
+
+// ── Floating button toggle ────────────────────────
+if (aiFab && aiPopup) {
+  aiFab.addEventListener('click', () => {
+    const isOpen = aiPopup.classList.toggle('is-open');
+    aiFab.classList.toggle('is-open', isOpen);
+    aiPopup.setAttribute('aria-hidden', String(!isOpen));
+    if (isOpen && amaInput) setTimeout(() => amaInput.focus(), 320);
+  });
+
+  aiPopupClose && aiPopupClose.addEventListener('click', () => {
+    aiPopup.classList.remove('is-open');
+    aiFab.classList.remove('is-open');
+    aiPopup.setAttribute('aria-hidden', 'true');
+  });
+
+  // Close on outside click
+  document.addEventListener('click', (e) => {
+    if (aiPopup.classList.contains('is-open') &&
+        !aiPopup.contains(e.target) &&
+        !aiFab.contains(e.target)) {
+      aiPopup.classList.remove('is-open');
+      aiFab.classList.remove('is-open');
+      aiPopup.setAttribute('aria-hidden', 'true');
+    }
+  });
+}
 
 if (amaMessages) {
   let suggestionsHidden = false;

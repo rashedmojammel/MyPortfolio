@@ -117,65 +117,82 @@
 
 
   <!-- ═══════════════════════════════════════
-       ASK ME ANYTHING — AI Section
+       FLOATING AI CHAT BUTTON + POPUP
   ═══════════════════════════════════════ -->
-  <section class="ama-section" id="ask-ai" data-reveal>
-    <div class="ama-inner">
 
-      <div class="ama-header">
-        <span class="ama-eyebrow"><i class="fas fa-robot"></i> AI Assistant</span>
-        <h2 class="ama-title">Ask Me <em>Anything</em></h2>
-        <p class="ama-subtitle">Curious about my skills, projects, or background? Ask away — powered by AI.</p>
-      </div>
+  <!-- Floating trigger button -->
+  <button class="ai-fab" id="ai-fab" aria-label="Open AI Assistant">
+    <span class="ai-fab-icon"><i class="fas fa-robot"></i></span>
+    <span class="ai-fab-label">Let's Talk</span>
+    <span class="ai-fab-pulse"></span>
+  </button>
 
-      <div class="ama-card">
+  <!-- Chat popup -->
+  <div class="ai-popup" id="ai-popup" aria-hidden="true">
+    <div class="ai-popup-inner">
 
-        <!-- Suggested questions -->
-        <div class="ama-suggestions" id="ama-suggestions">
-          <button class="ama-suggestion-btn" data-q="What are your top technical skills?">
-            <i class="fas fa-code"></i> Top Skills
-          </button>
-          <button class="ama-suggestion-btn" data-q="Tell me about your best projects">
-            <i class="fas fa-layer-group"></i> Best Projects
-          </button>
-          <button class="ama-suggestion-btn" data-q="What are you currently studying?">
-            <i class="fas fa-graduation-cap"></i> Education
-          </button>
-          <button class="ama-suggestion-btn" data-q="Why should I hire you?">
-            <i class="fas fa-star"></i> Why Hire Me?
-          </button>
-          <button class="ama-suggestion-btn" data-q="What kind of work are you looking for?">
-            <i class="fas fa-briefcase"></i> Goals
-          </button>
-          <button class="ama-suggestion-btn" data-q="What are your hobbies outside of coding?">
-            <i class="fas fa-heart"></i> Hobbies
-          </button>
-        </div>
-
-        <!-- Messages area -->
-        <div class="ama-messages" id="ama-messages"></div>
-
-        <!-- Input -->
-        <div class="ama-input-wrap">
-          <div class="ama-input-row">
-            <span class="ama-input-icon"><i class="fas fa-comment-alt"></i></span>
-            <input
-              type="text"
-              id="ama-input"
-              placeholder="Ask me anything about Rashedul…"
-              autocomplete="off"
-              maxlength="300"
-            />
-            <button id="ama-send-btn" aria-label="Send question">
-              <i class="fas fa-paper-plane"></i>
-            </button>
+      <!-- Popup header -->
+      <div class="ai-popup-header">
+        <div class="ai-popup-header-left">
+          <div class="ai-popup-avatar">
+            <i class="fas fa-robot"></i>
+            <span class="ai-popup-online"></span>
           </div>
-         <p class="ama-disclaimer">Use AI to quickly explore an overview of my portfolio.</p>
+          <div>
+            <div class="ai-popup-name">Rashed's AI</div>
+            <div class="ai-popup-status">Ask me anything ✦</div>
+          </div>
         </div>
-
+        <button class="ai-popup-close" id="ai-popup-close" aria-label="Close chat">
+          <i class="fas fa-times"></i>
+        </button>
       </div>
+
+      <!-- Suggested questions -->
+      <div class="ama-suggestions" id="ama-suggestions">
+        <button class="ama-suggestion-btn" data-q="What are your top technical skills?">
+          <i class="fas fa-code"></i> Top Skills
+        </button>
+        <button class="ama-suggestion-btn" data-q="Tell me about your best projects">
+          <i class="fas fa-layer-group"></i> Best Projects
+        </button>
+        <button class="ama-suggestion-btn" data-q="What are you currently studying?">
+          <i class="fas fa-graduation-cap"></i> Education
+        </button>
+        <button class="ama-suggestion-btn" data-q="Why should I hire you?">
+          <i class="fas fa-star"></i> Why Hire Me?
+        </button>
+        <button class="ama-suggestion-btn" data-q="What kind of work are you looking for?">
+          <i class="fas fa-briefcase"></i> Goals
+        </button>
+        <button class="ama-suggestion-btn" data-q="What are your hobbies outside of coding?">
+          <i class="fas fa-heart"></i> Hobbies
+        </button>
+      </div>
+
+      <!-- Messages area -->
+      <div class="ama-messages" id="ama-messages"></div>
+
+      <!-- Input -->
+      <div class="ama-input-wrap">
+        <div class="ama-input-row">
+          <span class="ama-input-icon"><i class="fas fa-comment-alt"></i></span>
+          <input
+            type="text"
+            id="ama-input"
+            placeholder="Ask me anything about Rashedul…"
+            autocomplete="off"
+            maxlength="300"
+          />
+          <button id="ama-send-btn" aria-label="Send question">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+        <p class="ama-disclaimer">Powered by local AI · Portfolio overview only</p>
+      </div>
+
     </div>
-  </section>
+  </div>
 
 
   <!-- ═══════════════════════════════════════
@@ -821,7 +838,7 @@
         <ul class="contact-info">
           <li>
             <i class="fas fa-envelope"></i>
-            <a href="/cdn-cgi/l/email-protection#144675677c7170797b7e75797971782122547379757d783a777b79"><span class="__cf_email__" data-cfemail="9bc9fae8f3fefff6f4f1faf6f6fef7aeaddbfcf6faf2f7b5f8f4f6">[email&#160;protected]</span></a>
+            <a href="mailto:Rashedmojammel56@gmail.com">rashedmojammel56@gmail.com</a>
           </li>
           <li>
             <i class="fas fa-phone"></i>
@@ -1094,7 +1111,7 @@
       <a id="eduOpenBtn" href="#" target="_blank">
         <i class="fas fa-external-link-alt"></i> Open in New Tab
       </a>
-      <span class="edu-modal-year" 
+      <span class="edu-modal-year" id="eduModalYear"></span>
     </div>
   </div>
 </div>
