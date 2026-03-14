@@ -340,7 +340,7 @@ window.closeModal = closeModal;
 /* ══════════════════════════════════════════════════
    7. CONTACT FORM
 ══════════════════════════════════════════════════ */
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxQyNjnLvJzP1ZgavadNtQW_WpthruWpRi5__e5JPu7LhbNIzcOxTg32D5n5lXApfkz/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxEXJGDZyyWXR1_t115J7sfhWlM5wVBbm3mTSapTxhvsB_0fJPhaU53lrlx8JX8brHH/exec';
 
 const contactForm = document.getElementById('contact-form');
 const formMsg     = document.getElementById('form-msg');
@@ -350,13 +350,13 @@ if (contactForm) {
   contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    // Loading state
     btnText.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending…';
 
     try {
       await fetch(SCRIPT_URL, {
         method: 'POST',
         body: new FormData(contactForm),
+        mode: 'no-cors',
       });
 
       formMsg.textContent = '✓ Message sent! I\'ll get back to you soon.';
