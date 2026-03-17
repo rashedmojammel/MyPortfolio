@@ -454,4 +454,7 @@ function closeEduModalOutside(e) {
 
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeEduModal();
+  
 });
+
+
