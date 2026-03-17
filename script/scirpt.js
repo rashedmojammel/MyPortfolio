@@ -456,5 +456,32 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeEduModal();
   
 });
+/* ── HOME IMAGE SLIDER ── */
+(function () {
+  const frames = document.querySelectorAll('.home-img-slider .home-img-frame');
+  const dots   = document.querySelectorAll('.home-img-dot');
+  let current  = 0;
+  let timer;
+
+  function goTo(index) {
+    frames[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = (index + frames.length) % frames.length;
+    frames[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+
+  function next() { goTo(current + 1); }
+
+  function startTimer() { timer = setInterval(next, 3500); }
+  function resetTimer()  { clearInterval(timer); startTimer(); }
+
+  // Dot click
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => { goTo(i); resetTimer(); });
+  });
+
+  startTimer();
+})();
 
 
