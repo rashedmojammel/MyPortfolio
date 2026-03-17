@@ -17,9 +17,116 @@
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="./styles/styles.css" />
-  <!-- <link rel="stylesheet" href="./styles/theme-aurora.css" /> -->
 
   <style>
+  /* ── Nav links — glow dot on ALL links ── */
+  .navlist {
+    display: flex;
+    gap: 0;
+    align-items: center;
+  }
+
+  .navlist a {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 8px 18px;
+    position: relative;
+    transition: color 0.3s ease;
+    overflow: hidden;
+  }
+
+  /* Kill old styles */
+  .navlist a::after { display: none; }
+  .navlist a::before { display: none; }
+
+  /* Scanline wipe */
+  .navlist a .nav-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg,
+      rgba(201,168,76,0.0) 0%,
+      rgba(201,168,76,0.07) 50%,
+      rgba(201,168,76,0.0) 100%
+    );
+    transform: translateX(-100%);
+    transition: transform 0.35s ease;
+    pointer-events: none;
+  }
+
+  .navlist a:hover .nav-bg,
+  .navlist a.active .nav-bg {
+    transform: translateX(0);
+  }
+
+  .navlist a:hover { color: var(--white); }
+
+  .navlist a.active {
+    color: var(--gold-light);
+  }
+
+  /* Bottom glowing line */
+  .navlist a .nav-line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), var(--gold-light), var(--gold), transparent);
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: 0 0 8px rgba(201,168,76,0.7), 0 0 20px rgba(201,168,76,0.3);
+    pointer-events: none;
+  }
+
+  .navlist a:hover .nav-line,
+  .navlist a.active .nav-line {
+    transform: translateX(-50%) scaleX(1);
+  }
+
+  .navlist a.active .nav-line {
+    box-shadow: 0 0 12px rgba(201,168,76,1), 0 0 30px rgba(201,168,76,0.5);
+    animation: linePulse 2.5s ease-in-out infinite;
+  }
+
+  /* Glow dot — appears on HOVER for all links */
+  .navlist a .nav-dot {
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+    font-size: 0.3rem;
+    color: var(--gold);
+    text-shadow: 0 0 8px rgba(201,168,76,0.9), 0 0 20px rgba(201,168,76,0.4);
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease;
+    opacity: 0;
+    pointer-events: none;
+    line-height: 1;
+  }
+
+  .navlist a:hover .nav-dot {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+  }
+
+  /* Active dot — always visible + pulsing */
+  .navlist a.active .nav-dot {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+    animation: dotPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes dotPulse {
+    0%, 100% { opacity: 1; text-shadow: 0 0 8px rgba(201,168,76,0.9), 0 0 20px rgba(201,168,76,0.4); }
+    50%       { opacity: 0.5; text-shadow: 0 0 4px rgba(201,168,76,0.5); }
+  }
+
+  @keyframes linePulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 12px rgba(201,168,76,1), 0 0 30px rgba(201,168,76,0.5); }
+    50%       { opacity: 0.6; box-shadow: 0 0 6px rgba(201,168,76,0.6), 0 0 14px rgba(201,168,76,0.2); }
+  }
   </style>
 </head>
 <body>
@@ -28,12 +135,45 @@
        LOADER
   ═══════════════════════════════════════ -->
   <div id="loader">
-    <div class="loader-inner">
-      <div class="loader-logo">Hello There<em>.</em></div>
-      <div class="loader-bar"><div class="loader-fill"></div></div>
-      <p class="loader-text">Loading Portfolio</p>
+  <div class="loader-inner">
+
+    <div class="loader-grid-bg"></div>
+
+    <div class="loader-top">
+      <div class="loader-brackets">
+        <span class="lb">[</span>
+        <span class="loader-name">RASHEDUL<em>.</em>ALAM</span>
+        <span class="rb">]</span>
+      </div>
+      <div class="loader-tagline">Software Engineer · Bangladesh</div>
     </div>
+
+    <div class="loader-bars">
+      <div class="loader-bar-row" style="--d:0s;   --w:100%">
+        <span class="lbl">Initializing</span>
+        <div class="lbar"><div class="lbar-fill"></div></div>
+      </div>
+      <div class="loader-bar-row" style="--d:0.2s; --w:85%">
+        <span class="lbl">Loading Assets</span>
+        <div class="lbar"><div class="lbar-fill"></div></div>
+      </div>
+      <div class="loader-bar-row" style="--d:0.4s; --w:92%">
+        <span class="lbl">Building UI</span>
+        <div class="lbar"><div class="lbar-fill"></div></div>
+      </div>
+      <div class="loader-bar-row" style="--d:0.6s; --w:78%">
+        <span class="lbl">Connecting</span>
+        <div class="lbar"><div class="lbar-fill"></div></div>
+      </div>
+    </div>
+
+    <div class="loader-status">
+      <span class="loader-status-dot"></span>
+      <span class="loader-status-text" id="loader-status-text">BOOTING SYSTEM...</span>
+    </div>
+
   </div>
+</div>
 
 
   <!-- ═══════════════════════════════════════
@@ -45,15 +185,16 @@
     </a>
 
     <nav class="navlist" id="navlist">
-  <a href="#home"><span class="nav-bg"></span><span class="nav-line"></span>Home</a>
-  <a href="#about"><span class="nav-bg"></span><span class="nav-line"></span>About</a>
-  <a href="#academic"><span class="nav-bg"></span><span class="nav-line"></span>Academic</a>
-  <a href="#portfolio"><span class="nav-bg"></span><span class="nav-line"></span>Projects</a>
-  <a href="#skills"><span class="nav-bg"></span><span class="nav-line"></span>Skills</a>
-  <a href="#certificates"><span class="nav-bg"></span><span class="nav-line"></span>Certificates</a>
-  <a href="#hobbies"><span class="nav-bg"></span><span class="nav-line"></span>Hobbies</a>
-  <a href="#contact"><span class="nav-bg"></span><span class="nav-line"></span>Contact</a>
-</nav>
+      <a href="#home"><span class="nav-bg"></span><span class="nav-line"></span><span class="nav-dot">●</span>Home</a>
+      <a href="#about"><span class="nav-bg"></span><span class="nav-line"></span><span class="nav-dot">●</span>About</a>
+      <a href="#academic"><span class="nav-bg"></span><span class="nav-line"></span><span class="nav-dot">●</span>Academic</a>
+      <a href="#portfolio"><span class="nav-bg"></span><span class="nav-line"></span><span class="nav-dot">●</span>Projects</a>
+      <a href="#skills"><span class="nav-bg"></span><span class="nav-line"></span><span class="nav-dot">●</span>Skills</a>
+      <a href="#certificates"><span class="nav-bg"></span><span class="nav-line"></span><span class="nav-dot">●</span>Certificates</a>
+      <a href="#hobbies"><span class="nav-bg"></span><span class="nav-line"></span><span class="nav-dot">●</span>Hobbies</a>
+      <a href="#contact"><span class="nav-bg"></span><span class="nav-line"></span><span class="nav-dot">●</span>Contact</a>
+    </nav>
+
     <div>
       <a href="img/numan resume.pdf" class="top-btn" target="_blank">
         <i class="fas fa-download"></i> Resume
@@ -112,29 +253,10 @@
     </div>
 
     <div class="home-img" data-reveal data-delay="150">
-  <div class="home-img-slider">
-    <div class="home-img-frame active">
-      <img src="./img/formal photo.png" alt="Rashedul Alam" />
+      <div class="home-img-frame">
+        <img src="./img/formal photo.png" alt="Rashedul Alam" />
+      </div>
     </div>
-    <div class="home-img-frame">
-      <img src="./img/IMG_0088.JPG" alt="Rashedul Alam" />
-    </div>
-    <div class="home-img-frame">
-      <img src="./img/IMG_0280.JPEG" alt="Rashedul Alam" />
-    </div>
-    <div class="home-img-frame">
-      <img src="./img/IMG_8971.JPEG" alt="Rashedul Alam" />
-    </div>
-
-    <!-- Dot indicators -->
-    <div class="home-img-dots">
-      <span class="home-img-dot active"></span>
-      <span class="home-img-dot"></span>
-      <span class="home-img-dot"></span>
-      <span class="home-img-dot"></span>
-    </div>
-  </div>
-</div>
   </section>
 
 
@@ -142,18 +264,14 @@
        FLOATING AI CHAT BUTTON + POPUP
   ═══════════════════════════════════════ -->
 
-  <!-- Floating trigger button -->
   <button class="ai-fab" id="ai-fab" aria-label="Open AI Assistant">
     <span class="ai-fab-icon"><i class="fas fa-robot"></i></span>
     <span class="ai-fab-label">Let's Talk</span>
     <span class="ai-fab-pulse"></span>
   </button>
 
-  <!-- Chat popup -->
   <div class="ai-popup" id="ai-popup" aria-hidden="true">
     <div class="ai-popup-inner">
-
-      <!-- Popup header -->
       <div class="ai-popup-header">
         <div class="ai-popup-header-left">
           <div class="ai-popup-avatar">
@@ -170,7 +288,6 @@
         </button>
       </div>
 
-      <!-- Suggested questions -->
       <div class="ama-suggestions" id="ama-suggestions">
         <button class="ama-suggestion-btn" data-q="What are your top technical skills?">
           <i class="fas fa-code"></i> Top Skills
@@ -192,10 +309,8 @@
         </button>
       </div>
 
-      <!-- Messages area -->
       <div class="ama-messages" id="ama-messages"></div>
 
-      <!-- Input -->
       <div class="ama-input-wrap">
         <div class="ama-input-row">
           <span class="ama-input-icon"><i class="fas fa-comment-alt"></i></span>
@@ -212,23 +327,18 @@
         </div>
         <p class="ama-disclaimer">Powered by local AI · Portfolio overview only</p>
       </div>
-
     </div>
   </div>
 
-  
-
 
   <!-- ═══════════════════════════════════════
-       VIDEO CV — placed right after hero
+       VIDEO CV
   ═══════════════════════════════════════ -->
   <div class="video-cv-section" data-reveal>
     <div class="video-cv-inner">
-
       <div class="video-cv-label">
         <span><i class="fas fa-play-circle" style="margin-right:6px"></i>Video CV</span>
       </div>
-
       <div class="video-cv-frame">
         <div class="video-cv-ratio">
           <iframe
@@ -240,14 +350,12 @@
           </iframe>
         </div>
       </div>
-
       <div class="video-cv-caption">
         <p>Watch my Video CV to learn more about my background and goals.</p>
         <a href="https://www.youtube.com/watch?v=7fRzncCnhaY" target="_blank">
           Watch on YouTube <i class="fas fa-arrow-right"></i>
         </a>
       </div>
-
     </div>
   </div>
 
@@ -277,102 +385,57 @@
         and redefines user experiences.
       </p>
 
-      <!-- Tabs -->
       <div class="tab-bar">
         <button class="tab-btn active" data-tab="education">Education</button>
         <button class="tab-btn" data-tab="basicskills">Basic Skills</button>
         <button class="tab-btn" data-tab="softskills">Soft Skills</button>
       </div>
 
-      <!-- Education Tab -->
-      <!-- <div class="tab-panel active" id="tab-education">
+      <div class="tab-panel active" id="tab-education">
         <ul class="edu-list">
-          <li class="edu-item">
+          <li class="edu-item" onclick="openEduModal('edu1')">
             <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
             <div class="edu-body">
-              <strong>B.Sc. in Computer Science & Engineering</strong>
+              <strong>B.Sc. in Computer Science &amp; Engineering</strong>
               <span>American International University-Bangladesh (AIUB)</span>
+              <em>Current CGPA : 3.71 / 4.00</em>
               <em>2023 — Present</em>
+              <span class="edu-view-chip"><i class="fas fa-file-pdf"></i> View Document</span>
             </div>
           </li>
-          <li class="edu-item">
+          <li class="edu-item" onclick="openEduModal('edu2')">
             <div class="edu-icon"><i class="fas fa-university"></i></div>
             <div class="edu-body">
               <strong>Higher Secondary Certificate (HSC)</strong>
               <span>Hathazari Govt. College</span>
+              <em>GPA : 4.75 / 5.00</em>
               <em>Completed: 2021</em>
+              <span class="edu-view-chip"><i class="fas fa-file-pdf"></i> View Certificate</span>
             </div>
           </li>
-          <li class="edu-item">
+          <li class="edu-item" onclick="openEduModal('edu3')">
             <div class="edu-icon"><i class="fas fa-school"></i></div>
             <div class="edu-body">
               <strong>Secondary School Certificate (SSC)</strong>
               <span>Wadudia High School</span>
+              <em>GPA : 4.56 / 5.00</em>
               <em>Completed: 2019</em>
+              <span class="edu-view-chip"><i class="fas fa-file-pdf"></i> View Certificate</span>
             </div>
           </li>
-          <li class="edu-item">
+          <li class="edu-item" onclick="openEduModal('edu4')">
             <div class="edu-icon"><i class="fas fa-school"></i></div>
             <div class="edu-body">
               <strong>Junior School Certificate (JSC)</strong>
               <span>Wadudia High School</span>
+              <em>GPA : 5.00 / 5.00</em>
               <em>Completed: 2016</em>
+              <span class="edu-view-chip"><i class="fas fa-file-pdf"></i> View Certificate</span>
             </div>
           </li>
         </ul>
-      </div> -->
-      
-<div class="tab-panel active" id="tab-education">
-  <ul class="edu-list">
-
-    <li class="edu-item" onclick="openEduModal('edu1')">
-      <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
-      <div class="edu-body">
-        <strong>B.Sc. in Computer Science &amp; Engineering</strong>
-        <span>American International University-Bangladesh (AIUB)</span>
-        <em>Current CGPA : 3.71 / 4.00</em>
-        <em>2023 — Present</em>
-        <span class="edu-view-chip"><i class="fas fa-file-pdf"></i> View Document</span>
       </div>
-    </li>
 
-    <li class="edu-item" onclick="openEduModal('edu2')">
-      <div class="edu-icon"><i class="fas fa-university"></i></div>
-      <div class="edu-body">
-        <strong>Higher Secondary Certificate (HSC)</strong>
-        <span>Hathazari Govt. College</span>
-        <em>GPA : 4.75 / 5.00</em>
-        <em>Completed: 2021</em>
-        <span class="edu-view-chip"><i class="fas fa-file-pdf"></i> View Certificate</span>
-      </div>
-    </li>
-
-    <li class="edu-item" onclick="openEduModal('edu3')">
-      <div class="edu-icon"><i class="fas fa-school"></i></div>
-      <div class="edu-body">
-        <strong>Secondary School Certificate (SSC)</strong>
-        <span>Wadudia High School</span>
-        <em>GPA : 4.56 / 5.00</em>
-        <em>Completed: 2019</em>
-        <span class="edu-view-chip"><i class="fas fa-file-pdf"></i> View Certificate</span>
-      </div>
-    </li>
-
-    <li class="edu-item" onclick="openEduModal('edu4')">
-      <div class="edu-icon"><i class="fas fa-school"></i></div>
-      <div class="edu-body">
-        <strong>Junior School Certificate (JSC)</strong>
-        <span>Wadudia High School</span>
-        <em>GPA : 5.00 / 5.00</em>
-        <em>Completed: 2016</em>
-        <span class="edu-view-chip"><i class="fas fa-file-pdf"></i> View Certificate</span>
-      </div>
-    </li>
-
-  </ul>
-</div>
-
-      <!-- Basic Skills Tab -->
       <div class="tab-panel" id="tab-basicskills">
         <ul class="basic-skills-list">
           <li>
@@ -399,7 +462,6 @@
         </ul>
       </div>
 
-      <!-- Soft Skills Tab -->
       <div class="tab-panel" id="tab-softskills">
         <ul class="basic-skills-list">
           <li>
@@ -453,21 +515,17 @@
     </div>
   </section>
 
-   <!-- ═══════════════════════════════════════
+  <!-- ═══════════════════════════════════════
        ACADEMIC EXPERIENCE
   ═══════════════════════════════════════ -->
   <section class="acad-section" id="academic" data-reveal>
     <div class="section-label">Academic</div>
-
     <div class="section-head" data-reveal>
       <p class="section-eyebrow"><i class="fas fa-flask"></i> Academic Experience</p>
       <h2 class="section-title">Campus <em>Moments</em></h2>
       <p class="section-sub">Highlights from my academic journey — projects, events &amp; milestones.</p>
     </div>
-
     <div class="acad-grid" data-reveal>
-
-      <!-- Card 1 — replace src with your real photo -->
       <div class="acad-card">
         <div class="acad-card-img-wrap">
           <img src="./img/formal photo.png" alt="Enrolled at AIUB" class="acad-card-img" />
@@ -479,8 +537,6 @@
           <span class="acad-card-tag"><i class="fas fa-graduation-cap"></i> University</span>
         </div>
       </div>
-
-      <!-- Card 2 — replace src with your real photo -->
       <div class="acad-card">
         <div class="acad-card-img-wrap">
           <img src="./img/formal photo.png" alt="Project Showcase" class="acad-card-img" />
@@ -492,8 +548,6 @@
           <span class="acad-card-tag"><i class="fas fa-layer-group"></i> Project</span>
         </div>
       </div>
-
-      <!-- Card 3 — replace src with your real photo -->
       <div class="acad-card">
         <div class="acad-card-img-wrap">
           <img src="./img/formal photo.png" alt="Dean's Recognition" class="acad-card-img" />
@@ -505,8 +559,6 @@
           <span class="acad-card-tag"><i class="fas fa-star"></i> Achievement</span>
         </div>
       </div>
-
-      <!-- Card 4 — replace src with your real photo -->
       <div class="acad-card">
         <div class="acad-card-img-wrap">
           <img src="./img/formal photo.png" alt="Tech Workshop" class="acad-card-img" />
@@ -518,7 +570,6 @@
           <span class="acad-card-tag"><i class="fas fa-microchip"></i> Workshop</span>
         </div>
       </div>
-
     </div>
   </section>
 
@@ -528,16 +579,12 @@
   ═══════════════════════════════════════ -->
   <section class="portfolio" id="portfolio">
     <div class="section-label">Work</div>
-
     <div class="section-head" data-reveal>
       <p class="section-eyebrow">Portfolio</p>
       <h2 class="section-title">My Amazing <em>Work</em></h2>
       <p class="section-sub">Crafting Excellence — A Showcase of My Creative Journey</p>
     </div>
-
     <div class="portfolio-grid" data-reveal>
-
-      <!-- Card 1 -->
       <article class="p-card" onclick="openModal('m1')">
         <div class="p-card-thumb">
           <img src="https://img.youtube.com/vi/xPAio-kAbhk/hqdefault.jpg" alt="Inventory Management System" />
@@ -550,8 +597,6 @@
           <span class="p-card-cta">View Project <i class="fas fa-arrow-right"></i></span>
         </div>
       </article>
-
-      <!-- Card 2 -->
       <article class="p-card" onclick="openModal('m2')">
         <div class="p-card-thumb">
           <img src="https://img.youtube.com/vi/QSno4rXUnew/hqdefault.jpg" alt="Dhaka City View" />
@@ -564,8 +609,6 @@
           <span class="p-card-cta">View Project <i class="fas fa-arrow-right"></i></span>
         </div>
       </article>
-
-      <!-- Card 3 -->
       <article class="p-card" onclick="openModal('m3')">
         <div class="p-card-thumb">
           <img src="https://img.youtube.com/vi/7y2ioy4NYc8/hqdefault.jpg" alt="Smart IoT Plant Care" />
@@ -578,8 +621,6 @@
           <span class="p-card-cta">View Project <i class="fas fa-arrow-right"></i></span>
         </div>
       </article>
-
-      <!-- Card 4 -->
       <article class="p-card" onclick="openModal('m4')">
         <div class="p-card-thumb">
           <img src="https://img.youtube.com/vi/8eoZIrefc58/hqdefault.jpg" alt="Wireless Transmitter" />
@@ -592,8 +633,6 @@
           <span class="p-card-cta">View Project <i class="fas fa-arrow-right"></i></span>
         </div>
       </article>
-
-      <!-- Card 5 -->
       <article class="p-card" onclick="openModal('m5')">
         <div class="p-card-thumb">
           <img src="https://img.youtube.com/vi/ubyMm3Xg8Ek/hqdefault.jpg" alt="Hostel Management System" />
@@ -606,24 +645,19 @@
           <span class="p-card-cta">View Project <i class="fas fa-arrow-right"></i></span>
         </div>
       </article>
-
-      <!-- Card 6 -->
-     <article class="p-card" onclick="openModal('m6')">
-  <div class="p-card-thumb">
-    <img src="https://img.youtube.com/vi/wPyphIlahds/0.jpg" alt="Payoo Mobile Wallet Web App" />
-    <div class="p-card-play"><i class="fas fa-play"></i></div>
-  </div>
-
-  <div class="p-card-body">
-    <span class="p-tag">HTML · Tailwind CSS · DaisyUI · JavaScript</span>
-    <h3>Payoo — Mobile Wallet Web App</h3>
-    <p>
-      A Bangladesh-focused digital wallet web application featuring money transfer,
-      mobile recharge, bill payment, QR transactions, finance tools, and 40+ wallet features.
-    </p>
-    <span class="p-card-cta">View Project <i class="fas fa-arrow-right"></i></span>
-  </div>
-</article>
+      <article class="p-card" onclick="openModal('m6')">
+        <div class="p-card-thumb">
+          <img src="https://img.youtube.com/vi/wPyphIlahds/0.jpg" alt="Payoo Mobile Wallet Web App" />
+          <div class="p-card-play"><i class="fas fa-play"></i></div>
+        </div>
+        <div class="p-card-body">
+          <span class="p-tag">HTML · Tailwind CSS · DaisyUI · JavaScript</span>
+          <h3>Payoo — Mobile Wallet Web App</h3>
+          <p>A Bangladesh-focused digital wallet web application featuring money transfer, mobile recharge, bill payment, QR transactions, finance tools, and 40+ wallet features.</p>
+          <span class="p-card-cta">View Project <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </article>
+    </div>
   </section>
 
 
@@ -632,15 +666,12 @@
   ═══════════════════════════════════════ -->
   <section class="skills" id="skills">
     <div class="section-label">Skills</div>
-
     <div class="section-head" data-reveal>
       <p class="section-eyebrow">Expertise</p>
       <h2 class="section-title">Earned <em>Skills</em></h2>
       <p class="section-sub">Mastering Expertise — Showcasing Skills with Proficiency</p>
     </div>
-
     <div class="skills-grid" data-reveal>
-
       <div class="skill-card">
         <div class="skill-card-icon"><i class="fas fa-laptop-code"></i></div>
         <h3>Frontend</h3>
@@ -654,7 +685,6 @@
           <span class="tag-text">Tailwind</span>
         </div>
       </div>
-
       <div class="skill-card">
         <div class="skill-card-icon"><i class="fas fa-server"></i></div>
         <h3>Backend</h3>
@@ -668,7 +698,6 @@
           <span class="tag-text">.NET</span>
         </div>
       </div>
-
       <div class="skill-card">
         <div class="skill-card-icon"><i class="fas fa-microchip"></i></div>
         <h3>Languages</h3>
@@ -679,7 +708,6 @@
           <span><i class="fas fa-hashtag"></i> C#</span>
         </div>
       </div>
-
       <div class="skill-card">
         <div class="skill-card-icon"><i class="fas fa-tools"></i></div>
         <h3>Tools</h3>
@@ -691,11 +719,8 @@
           <span><i class="fab fa-github"></i> GitHub</span>
         </div>
       </div>
-
     </div>
   </section>
-
-  
 
 
   <!-- ═══════════════════════════════════════
@@ -703,214 +728,116 @@
   ═══════════════════════════════════════ -->
   <section class="certificates" id="certificates">
     <div class="section-label">Certs</div>
-
     <div class="section-head" data-reveal>
       <p class="section-eyebrow">Credentials</p>
       <h2 class="section-title">Certificates &amp; <em>Achievements</em></h2>
       <p class="section-sub">Verified learning milestones and recognized accomplishments</p>
     </div>
-
     <div class="cert-grid">
-
-      <!-- Certificate 1 -->
       <div class="cert-card" data-reveal data-delay="0">
         <div class="cert-shimmer"></div>
         <span class="cert-badge gold">2024</span>
         <div class="cert-icon"><i class="fab fa-python"></i></div>
         <h3>Python for Everybody</h3>
         <p>Completed an in-depth specialization covering Python fundamentals, data structures, web scraping, databases, and data visualization.</p>
-        <div class="cert-issuer">
-          <i class="fas fa-award"></i> Coursera · University of Michigan
-        </div>
+        <div class="cert-issuer"><i class="fas fa-award"></i> Coursera · University of Michigan</div>
         <a href="#" target="_blank" class="cert-link">View Certificate <i class="fas fa-arrow-right"></i></a>
       </div>
-
-      <!-- Certificate 2 -->
       <div class="cert-card" data-reveal data-delay="80">
         <div class="cert-shimmer"></div>
         <span class="cert-badge gold">2026</span>
         <div class="cert-icon"><i class="fas fa-globe"></i></div>
         <h3>The Web Developer Bootcamp</h3>
         <p>Mastered full-stack web development covering HTML, CSS, JavaScript, Node.js, Express, and MongoDB through hands-on projects.</p>
-        <div class="cert-issuer">
-          <i class="fas fa-award"></i> Programming Hero
-        </div>
+        <div class="cert-issuer"><i class="fas fa-award"></i> Programming Hero</div>
         <a href="#" target="_blank" class="cert-link">View Certificate <i class="fas fa-arrow-right"></i></a>
       </div>
-
-      <!-- Certificate 3 -->
       <div class="cert-card" data-reveal data-delay="160">
         <div class="cert-shimmer"></div>
         <span class="cert-badge gold">2026</span>
         <div class="cert-icon"><i class="fas fa-microchip"></i></div>
         <h3>Data Science and Machine Learning</h3>
         <p>Learned to analyze data, build predictive models, and develop intelligent systems using machine learning algorithms and data-driven techniques for real-world problem solving.</p>
-        <div class="cert-issuer">
-          <i class="fas fa-award"></i> Ostad
-        </div>
+        <div class="cert-issuer"><i class="fas fa-award"></i> Ostad</div>
         <a href="#" target="_blank" class="cert-link">View Certificate <i class="fas fa-arrow-right"></i></a>
       </div>
-
     </div>
   </section>
+
+
   <!-- ═══════════════════════════════════════
-     HOBBIES
-═══════════════════════════════════════ -->
-<section class="hobbies" id="hobbies">
-  <div class="section-label">Hobbies</div>
-
-  <div class="section-head" data-reveal>
-    <p class="section-eyebrow">Beyond Code</p>
-    <h2 class="section-title">Things I <em>Love</em></h2>
-    <p class="section-sub">What keeps me inspired outside of work</p>
-  </div>
-
-  <div class="hobbies-grid" data-reveal>
-
-    <!-- ── GAMING (wide card with per-game divs) ── -->
-    <div class="hobby-card hobby-card--wide">
-      <div class="hobby-card-top">
-        <div class="hobby-icon"><i class="fas fa-gamepad"></i></div>
-        <div>
-          <h3>Gaming</h3>
-          <p class="hobby-sub">How games sharpen my problem-solving skills</p>
+       HOBBIES
+  ═══════════════════════════════════════ -->
+  <section class="hobbies" id="hobbies">
+    <div class="section-label">Hobbies</div>
+    <div class="section-head" data-reveal>
+      <p class="section-eyebrow">Beyond Code</p>
+      <h2 class="section-title">Things I <em>Love</em></h2>
+      <p class="section-sub">What keeps me inspired outside of work</p>
+    </div>
+    <div class="hobbies-grid" data-reveal>
+      <div class="hobby-card hobby-card--wide">
+        <div class="hobby-card-top">
+          <div class="hobby-icon"><i class="fas fa-gamepad"></i></div>
+          <div>
+            <h3>Gaming</h3>
+            <p class="hobby-sub">How games sharpen my problem-solving skills</p>
+          </div>
         </div>
-      </div>
-      <p>Gaming isn't just entertainment — it actively sharpens my problem-solving skills. Every game I play teaches something different that I bring into my engineering mindset.</p>
-
-      <div class="hobby-games-grid">
-
-        <!-- PUBG -->
-        <div class="game-card">
-          <div class="game-card-header">
-            <div class="game-icon pubg-icon"><i class="fas fa-crosshairs"></i></div>
-            <div>
-              <h4>PUBG</h4>
-              <span class="game-genre">Battle Royale · Tactical Shooter</span>
+        <p>Gaming isn't just entertainment — it actively sharpens my problem-solving skills. Every game I play teaches something different that I bring into my engineering mindset.</p>
+        <div class="hobby-games-grid">
+          <div class="game-card">
+            <div class="game-card-header">
+              <div class="game-icon pubg-icon"><i class="fas fa-crosshairs"></i></div>
+              <div><h4>PUBG</h4><span class="game-genre">Battle Royale · Tactical Shooter</span></div>
             </div>
+            <p>Every match demands <strong>real-time decision making</strong>, resource management under pressure, and tactical thinking with limited information — the same mindset I use when debugging under a deadline or optimizing system performance.</p>
+            <div class="game-skills"><span>Quick Decision Making</span><span>Resource Management</span><span>Pressure Handling</span></div>
           </div>
-          <p>Every match demands <strong>real-time decision making</strong>, resource management under pressure, and tactical thinking with limited information — the same mindset I use when debugging under a deadline or optimizing system performance.</p>
-          <div class="game-skills">
-            <span>Quick Decision Making</span>
-            <span>Resource Management</span>
-            <span>Pressure Handling</span>
-          </div>
-        </div>
-
-        <!-- Forza Horizon -->
-        <div class="game-card">
-          <div class="game-card-header">
-            <div class="game-icon forza-icon"><i class="fas fa-car"></i></div>
-            <div>
-              <h4>Forza Horizon</h4>
-              <span class="game-genre">Open World · Racing</span>
+          <div class="game-card">
+            <div class="game-card-header">
+              <div class="game-icon forza-icon"><i class="fas fa-car"></i></div>
+              <div><h4>Forza Horizon</h4><span class="game-genre">Open World · Racing</span></div>
             </div>
+            <p>Forza trains <strong>spatial awareness, precision, and rapid adaptation</strong> to constantly changing environments. Choosing the right route and tuning the car mirrors how I optimize code — small tweaks, big performance gains.</p>
+            <div class="game-skills"><span>Spatial Thinking</span><span>Precision & Accuracy</span><span>Optimization</span></div>
           </div>
-          <p>Forza trains <strong>spatial awareness, precision, and rapid adaptation</strong> to constantly changing environments. Choosing the right route and tuning the car mirrors how I optimize code — small tweaks, big performance gains.</p>
-          <div class="game-skills">
-            <span>Spatial Thinking</span>
-            <span>Precision & Accuracy</span>
-            <span>Optimization</span>
+          <div class="game-card">
+            <div class="game-card-header">
+              <div class="game-icon gta-icon"><i class="fas fa-city"></i></div>
+              <div><h4>GTA 5</h4><span class="game-genre">Open World · Action</span></div>
+            </div>
+            <p>GTA 5's massive open world teaches <strong>mission planning, multi-step execution, and creative problem solving</strong>. Every heist requires coordinating resources, anticipating failures, and pivoting when the plan collapses — exactly like debugging a complex system under pressure.</p>
+            <div class="game-skills"><span>Mission Planning</span><span>Multi-step Execution</span><span>Creative Solutions</span></div>
+          </div>
+          <div class="game-card">
+            <div class="game-card-header">
+              <div class="game-icon pes-icon"><i class="fas fa-futbol"></i></div>
+              <div><h4>PES</h4><span class="game-genre">Football · Sports Strategy</span></div>
+            </div>
+            <p>PES sharpens <strong>team strategy, formation thinking, and pattern recognition</strong>. Reading the opponent's moves, adjusting tactics in real time, and executing plays under pressure maps directly to how I approach collaborative projects and agile teamwork.</p>
+            <div class="game-skills"><span>Pattern Recognition</span><span>Team Strategy</span><span>Adaptability</span></div>
           </div>
         </div>
-        <div class="game-card">
-    <div class="game-card-header">
-      <div class="game-icon gta-icon"><i class="fas fa-city"></i></div>
-      <div>
-        <h4>GTA 5</h4>
-        <span class="game-genre">Open World · Action</span>
       </div>
-    </div>
-    <p>GTA 5's massive open world teaches <strong>mission planning, multi-step execution, and creative problem solving</strong>. Every heist requires coordinating resources, anticipating failures, and pivoting when the plan collapses — exactly like debugging a complex system under pressure.</p>
-    <div class="game-skills">
-      <span>Mission Planning</span>
-      <span>Multi-step Execution</span>
-      <span>Creative Solutions</span>
-    </div>
-  </div>
-  <!-- PES -->
-  <div class="game-card">
-    <div class="game-card-header">
-      <div class="game-icon pes-icon"><i class="fas fa-futbol"></i></div>
-      <div>
-        <h4>PES</h4>
-        <span class="game-genre">Football · Sports Strategy</span>
-      </div>
-    </div>
-    <p>PES sharpens <strong>team strategy, formation thinking, and pattern recognition</strong>. Reading the opponent's moves, adjusting tactics in real time, and executing plays under pressure maps directly to how I approach collaborative projects and agile teamwork.</p>
-    <div class="game-skills">
-      <span>Pattern Recognition</span>
-      <span>Team Strategy</span>
-      <span>Adaptability</span>
-    </div>
-  </div>
-
-      </div>
-      
-    </div>
-
-    <!-- ── MOVIES (wide card) ── -->
-    <div class="hobby-card hobby-card--wide">
-      <div class="hobby-card-top">
-        <div class="hobby-icon"><i class="fas fa-film"></i></div>
-        <div>
-          <h3>Watching Movies</h3>
-          <p class="hobby-sub">English Films · Documentaries · Sci-Fi</p>
+      <div class="hobby-card hobby-card--wide">
+        <div class="hobby-card-top">
+          <div class="hobby-icon"><i class="fas fa-film"></i></div>
+          <div>
+            <h3>Watching Movies</h3>
+            <p class="hobby-sub">English Films · Documentaries · Sci-Fi</p>
+          </div>
+        </div>
+        <p>Watching English movies has been one of my most effective ways to improve my <strong>spoken English</strong>. Listening to natural dialogue, accents, and expressions helped me build vocabulary, improve pronunciation, and understand conversational flow far beyond what textbooks teach. Sci-fi and tech-themed films also spark creative thinking and inspire new ideas for projects.</p>
+        <div class="hobby-game-tags">
+          <span><i class="fas fa-comments"></i> English Speaking</span>
+          <span><i class="fas fa-brain"></i> Creative Thinking</span>
+          <span><i class="fas fa-rocket"></i> Sci-Fi</span>
+          <span><i class="fas fa-globe"></i> Documentaries</span>
         </div>
       </div>
-      <p>Watching English movies has been one of my most effective ways to improve my <strong>spoken English</strong>. Listening to natural dialogue, accents, and expressions helped me build vocabulary, improve pronunciation, and understand conversational flow far beyond what textbooks teach. Sci-fi and tech-themed films also spark creative thinking and inspire new ideas for projects.</p>
-      <div class="hobby-game-tags">
-        <span><i class="fas fa-comments"></i> English Speaking</span>
-        <span><i class="fas fa-brain"></i> Creative Thinking</span>
-        <span><i class="fas fa-rocket"></i> Sci-Fi</span>
-        <span><i class="fas fa-globe"></i> Documentaries</span>
-      </div>
     </div>
-
-    <!-- ── PHOTOGRAPHY ── -->
-    <!-- <div class="hobby-card">
-      <div class="hobby-icon"><i class="fas fa-camera"></i></div>
-      <h3>Photography</h3>
-      <p>Capturing moments, architecture, and street life — photography trains my eye for detail and composition, skills that directly influence my UI design work.</p>
-      <div class="hobby-photo-grid">
-        <div class="hobby-photo-placeholder">
-          <i class="fas fa-image"></i>
-          <span>Add Photo</span>
-        </div>
-        <div class="hobby-photo-placeholder">
-          <i class="fas fa-image"></i>
-          <span>Add Photo</span>
-        </div>
-        <div class="hobby-photo-placeholder">
-          <i class="fas fa-image"><img src="./img/"></i>
-          <span></span>
-        </div>
-      </div>
-    </div> -->
-
-    <!-- ── READING ── -->
-    <!-- <div class="hobby-card">
-      <div class="hobby-icon"><i class="fas fa-book-open"></i></div>
-      <h3>Reading</h3>
-      <p>Tech articles, sci-fi novels, and self-improvement books keep me growing and curious about the world.</p>
-    </div> -->
-
-    <!-- ── MUSIC ── -->
-    <!-- <div class="hobby-card">
-      <div class="hobby-icon"><i class="fas fa-music"></i></div>
-      <h3>Music</h3>
-      <p>Listening to a wide range of genres — music fuels focus, creativity, and long coding sessions.</p>
-    </div> -->
-
-    <!-- ── UI DESIGN ── -->
-    <!-- <div class="hobby-card">
-      <div class="hobby-icon"><i class="fas fa-pencil-ruler"></i></div>
-      <h3>UI Design</h3>
-      <p>Sketching interface ideas and experimenting with design concepts in Figma for fun and practice.</p>
-    </div> -->
-
-  </div>
-</section>
+  </section>
 
 
   <!-- ═══════════════════════════════════════
@@ -918,16 +845,11 @@
   ═══════════════════════════════════════ -->
   <section class="contact" id="contact">
     <div class="section-label">Contact</div>
-
     <div class="contact-inner">
       <div class="contact-left" data-reveal>
         <p class="section-eyebrow">Get In Touch</p>
         <h2 class="section-title">Let's Work<br /><em>Together</em></h2>
-        <p class="contact-desc">
-          Have a project in mind or want to collaborate? Feel free to reach out —
-          I'd love to hear from you.
-        </p>
-
+        <p class="contact-desc">Have a project in mind or want to collaborate? Feel free to reach out — I'd love to hear from you.</p>
         <ul class="contact-info">
           <li>
             <i class="fas fa-envelope"></i>
@@ -938,23 +860,13 @@
             <a href="tel:+8801890642735">+8801890642735</a>
           </li>
         </ul>
-
         <div class="contact-socials">
-          <a href="https://www.facebook.com/share/1DcnFQG8oF/?mibextid=wwXIfr" target="_blank" aria-label="Facebook">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/rashed07" target="_blank" aria-label="LinkedIn">
-            <i class="fab fa-linkedin-in"></i>
-          </a>
-          <a href="https://www.instagram.com/rashed_mojammel" target="_blank" aria-label="Instagram">
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a href="https://github.com/rashedmojammel" target="_blank" aria-label="GitHub">
-            <i class="fab fa-github"></i>
-          </a>
+          <a href="https://www.facebook.com/share/1DcnFQG8oF/?mibextid=wwXIfr" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.linkedin.com/in/rashed07" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://www.instagram.com/rashed_mojammel" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://github.com/rashedmojammel" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
         </div>
       </div>
-
       <div class="contact-right" data-reveal data-delay="100">
         <form id="contact-form" name="submit-to-google-sheet">
           <div class="form-group">
@@ -991,14 +903,11 @@
   <!-- ═══════════════════════════════════════
        MODALS
   ═══════════════════════════════════════ -->
-
-  <!-- Modal 1 -->
   <div class="modal" id="m1" role="dialog" aria-modal="true" aria-labelledby="m1-title">
     <div class="modal-box">
       <button class="modal-close" onclick="closeModal('m1')" aria-label="Close"><i class="fas fa-times"></i></button>
       <div class="modal-video-wrap">
-        <iframe id="m1-iframe" src="" title="Inventory Management System" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe id="m1-iframe" src="" title="Inventory Management System" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
       <div class="modal-content">
         <span class="p-tag">Web Application</span>
@@ -1008,23 +917,17 @@
           <span><i class="fas fa-hashtag"></i> C#</span>
           <span><i class="fas fa-database"></i> MySQL</span>
         </div>
-        <a href="https://github.com/rashedmojammel/Inventory-management-system" target="_blank" class="btn btn-gold">
-          <i class="fab fa-github"></i> GitHub Repository
-        </a>
-        <a href="https://www.youtube.com/watch?v=xPAio-kAbhk" target="_blank" class="btn btn-gold">
-          <i class="fab fa-youtube"></i> Watch on YouTube
-        </a>
+        <a href="https://github.com/rashedmojammel/Inventory-management-system" target="_blank" class="btn btn-gold"><i class="fab fa-github"></i> GitHub Repository</a>
+        <a href="https://www.youtube.com/watch?v=xPAio-kAbhk" target="_blank" class="btn btn-gold"><i class="fab fa-youtube"></i> Watch on YouTube</a>
       </div>
     </div>
   </div>
 
-  <!-- Modal 2 -->
   <div class="modal" id="m2" role="dialog" aria-modal="true" aria-labelledby="m2-title">
     <div class="modal-box">
       <button class="modal-close" onclick="closeModal('m2')" aria-label="Close"><i class="fas fa-times"></i></button>
       <div class="modal-video-wrap">
-        <iframe id="m2-iframe" src="" title="Dhaka City View" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe id="m2-iframe" src="" title="Dhaka City View" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
       <div class="modal-content">
         <span class="p-tag">Visual Project</span>
@@ -1034,23 +937,17 @@
           <span><i class="fas fa-microchip"></i> C++</span>
           <span><i class="fas fa-cube"></i> OpenGL</span>
         </div>
-        <a href="https://github.com/rashedmojammel/Dhaka-city-view-OpenGL" target="_blank" class="btn btn-gold">
-          <i class="fab fa-github"></i> GitHub Repository
-        </a>
-        <a href="https://www.youtube.com/watch?v=QSno4rXUnew" target="_blank" class="btn btn-gold">
-          <i class="fab fa-youtube"></i> Watch on YouTube
-        </a>
+        <a href="https://github.com/rashedmojammel/Dhaka-city-view-OpenGL" target="_blank" class="btn btn-gold"><i class="fab fa-github"></i> GitHub Repository</a>
+        <a href="https://www.youtube.com/watch?v=QSno4rXUnew" target="_blank" class="btn btn-gold"><i class="fab fa-youtube"></i> Watch on YouTube</a>
       </div>
     </div>
   </div>
 
-  <!-- Modal 3 -->
   <div class="modal" id="m3" role="dialog" aria-modal="true" aria-labelledby="m3-title">
     <div class="modal-box">
       <button class="modal-close" onclick="closeModal('m3')" aria-label="Close"><i class="fas fa-times"></i></button>
       <div class="modal-video-wrap">
-        <iframe id="m3-iframe" src="" title="Smart IoT Plant Care" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe id="m3-iframe" src="" title="Smart IoT Plant Care" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
       <div class="modal-content">
         <span class="p-tag">IoT Project</span>
@@ -1061,23 +958,17 @@
           <span><i class="fas fa-wifi"></i> IoT Sensors</span>
           <span><i class="fas fa-code"></i> C++</span>
         </div>
-        <a href="https://github.com/rashedmojammel/Smart-IoT-Plant-Care-System-for-Automated-Irrigation-and-Monitoring" target="_blank" class="btn btn-gold">
-          <i class="fab fa-github"></i> GitHub Repository
-        </a>
-        <a href="https://www.youtube.com/watch?v=7y2ioy4NYc8" target="_blank" class="btn btn-gold">
-          <i class="fab fa-youtube"></i> Watch on YouTube
-        </a>
+        <a href="https://github.com/rashedmojammel/Smart-IoT-Plant-Care-System-for-Automated-Irrigation-and-Monitoring" target="_blank" class="btn btn-gold"><i class="fab fa-github"></i> GitHub Repository</a>
+        <a href="https://www.youtube.com/watch?v=7y2ioy4NYc8" target="_blank" class="btn btn-gold"><i class="fab fa-youtube"></i> Watch on YouTube</a>
       </div>
     </div>
   </div>
 
-  <!-- Modal 4 -->
   <div class="modal" id="m4" role="dialog" aria-modal="true" aria-labelledby="m4-title">
     <div class="modal-box">
       <button class="modal-close" onclick="closeModal('m4')" aria-label="Close"><i class="fas fa-times"></i></button>
       <div class="modal-video-wrap">
-        <iframe id="m4-iframe" src="" title="Wireless Transmitter" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe id="m4-iframe" src="" title="Wireless Transmitter" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
       <div class="modal-content">
         <span class="p-tag">Hardware Project</span>
@@ -1088,23 +979,17 @@
           <span><i class="fas fa-broadcast-tower"></i> RF Module</span>
           <span><i class="fas fa-drafting-compass"></i> Circuit Design</span>
         </div>
-        <a href="https://github.com/rashedmojammel/Wireless-transmitter-" target="_blank" class="btn btn-gold">
-          <i class="fab fa-github"></i> GitHub Repository
-        </a>
-        <a href="https://www.youtube.com/watch?v=8eoZIrefc58" target="_blank" class="btn btn-gold">
-          <i class="fab fa-youtube"></i> Watch on YouTube
-        </a>
+        <a href="https://github.com/rashedmojammel/Wireless-transmitter-" target="_blank" class="btn btn-gold"><i class="fab fa-github"></i> GitHub Repository</a>
+        <a href="https://www.youtube.com/watch?v=8eoZIrefc58" target="_blank" class="btn btn-gold"><i class="fab fa-youtube"></i> Watch on YouTube</a>
       </div>
     </div>
   </div>
 
-  <!-- Modal 5 -->
   <div class="modal" id="m5" role="dialog" aria-modal="true" aria-labelledby="m5-title">
     <div class="modal-box">
       <button class="modal-close" onclick="closeModal('m5')" aria-label="Close"><i class="fas fa-times"></i></button>
       <div class="modal-video-wrap">
-        <iframe id="m5-iframe" src="" title="Hostel Management System" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe id="m5-iframe" src="" title="Hostel Management System" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
       <div class="modal-content">
         <span class="p-tag">Web Application</span>
@@ -1117,37 +1002,22 @@
           <span><i class="fab fa-php"></i> PHP</span>
           <span><i class="fas fa-database"></i> MySQL</span>
         </div>
-        <a href="https://github.com/rashedmojammel/HostelManagementSystem" target="_blank" class="btn btn-gold">
-          <i class="fab fa-github"></i> GitHub Repository
-        </a>
-        <a href="https://www.youtube.com/watch?v=ubyMm3Xg8Ek" target="_blank" class="btn btn-gold">
-          <i class="fab fa-youtube"></i> Watch on YouTube
-        </a>
+        <a href="https://github.com/rashedmojammel/HostelManagementSystem" target="_blank" class="btn btn-gold"><i class="fab fa-github"></i> GitHub Repository</a>
+        <a href="https://www.youtube.com/watch?v=ubyMm3Xg8Ek" target="_blank" class="btn btn-gold"><i class="fab fa-youtube"></i> Watch on YouTube</a>
       </div>
     </div>
   </div>
 
-  <!-- Modal 6 -->
   <div class="modal" id="m6" role="dialog" aria-modal="true" aria-labelledby="m6-title">
     <div class="modal-box">
-      <button class="modal-close" onclick="closeModal('m6')" aria-label="Close">
-        <i class="fas fa-times"></i>
-      </button>
+      <button class="modal-close" onclick="closeModal('m6')" aria-label="Close"><i class="fas fa-times"></i></button>
       <div class="modal-video-wrap">
-        <iframe id="m6-iframe" src="" title="Payoo Digital Mobile App" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe id="m6-iframe" src="" title="Payoo Digital Mobile App" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
       <div class="modal-content">
         <span class="p-tag">Fintech Web Application</span>
         <h2 id="m6-title">Payoo — Mobile Wallet Web App</h2>
-        <p>
-          Payoo is a feature-rich mobile wallet simulation inspired by Bangladesh
-          fintech apps. The system includes 40+ features such as send money,
-          add money, bill payments, mobile recharge, QR payments, budgeting tools,
-          financial calculators, transport utilities, and transaction history.
-          All data is stored using localStorage, allowing the application to work
-          fully without a backend or database.
-        </p>
+        <p>Payoo is a feature-rich mobile wallet simulation inspired by Bangladesh fintech apps. The system includes 40+ features such as send money, add money, bill payments, mobile recharge, QR payments, budgeting tools, financial calculators, transport utilities, and transaction history. All data is stored using localStorage, allowing the application to work fully without a backend or database.</p>
         <div class="modal-tech">
           <span><i class="fab fa-html5"></i> HTML</span>
           <span><i class="fab fa-css3-alt"></i> Tailwind CSS</span>
@@ -1155,59 +1025,39 @@
           <span><i class="fab fa-js"></i> JavaScript</span>
           <span><i class="fas fa-database"></i> localStorage</span>
         </div>
-        <a href="https://github.com/rashedmojammel/Payoo" target="_blank" class="btn btn-gold">
-          <i class="fab fa-github"></i> GitHub Repository
-        </a>
-        <a href="https://easypayoo.netlify.app" target="_blank" class="btn btn-gold">
-          <i class="fa-solid fa-link"></i> Live Link
-        </a>
-        <a href="https://youtu.be/wPyphIlahds" target="_blank" class="btn btn-gold">
-          <i class="fab fa-youtube"></i> Watch on YouTube
-        </a>
+        <a href="https://github.com/rashedmojammel/Payoo" target="_blank" class="btn btn-gold"><i class="fab fa-github"></i> GitHub Repository</a>
+        <a href="https://easypayoo.netlify.app" target="_blank" class="btn btn-gold"><i class="fa-solid fa-link"></i> Live Link</a>
+        <a href="https://youtu.be/wPyphIlahds" target="_blank" class="btn btn-gold"><i class="fab fa-youtube"></i> Watch on YouTube</a>
       </div>
     </div>
   </div>
 
-  
-<div class="edu-modal-overlay" id="eduModal" role="dialog" aria-modal="true"
-     aria-labelledby="eduModalTitle" onclick="closeEduModalOutside(event)">
-  <div class="edu-modal-box">
 
-    <!-- Header -->
-    <div class="edu-modal-header">
-      <div class="edu-modal-title-wrap">
-        <div class="edu-modal-icon" id="eduModalIcon">
-          <i class="fas fa-graduation-cap"></i>
+  <!-- Education Modal -->
+  <div class="edu-modal-overlay" id="eduModal" role="dialog" aria-modal="true"
+       aria-labelledby="eduModalTitle" onclick="closeEduModalOutside(event)">
+    <div class="edu-modal-box">
+      <div class="edu-modal-header">
+        <div class="edu-modal-title-wrap">
+          <div class="edu-modal-icon" id="eduModalIcon"><i class="fas fa-graduation-cap"></i></div>
+          <div>
+            <div class="edu-modal-name" id="eduModalTitle">Document</div>
+            <div class="edu-modal-sub" id="eduModalSub">Institution</div>
+          </div>
         </div>
-        <div>
-          <div class="edu-modal-name" id="eduModalTitle">Document</div>
-          <div class="edu-modal-sub" id="eduModalSub">Institution</div>
-        </div>
+        <button class="edu-modal-close" onclick="closeEduModal()" aria-label="Close"><i class="fas fa-times"></i></button>
       </div>
-      <button class="edu-modal-close" onclick="closeEduModal()" aria-label="Close">
-        <i class="fas fa-times"></i>
-      </button>
-    </div>
-
-    <!-- PDF Viewer -->
-    <!-- Viewer: img for images, iframe for PDFs -->
-<div class="edu-modal-pdf">
-  <img    id="eduModalImg"    src="" alt="Certificate" style="display:none; width:100%; height:auto; max-height:65vh; object-fit:contain; object-position:top;" />
-  <iframe id="eduModalIframe" src="" title="Education Document" style="display:none;"></iframe>
-</div>
-
-    <!-- Footer -->
-    <div class="edu-modal-footer">
-      <a id="eduDownloadBtn" href="#" target="_blank" download>
-        <i class="fas fa-download"></i> Download
-      </a>
-      <a id="eduOpenBtn" href="#" target="_blank">
-        <i class="fas fa-external-link-alt"></i> Open in New Tab
-      </a>
-      <span class="edu-modal-year" id="eduModalYear"></span>
+      <div class="edu-modal-pdf">
+        <img    id="eduModalImg"    src="" alt="Certificate" style="display:none; width:100%; height:auto; max-height:65vh; object-fit:contain; object-position:top;" />
+        <iframe id="eduModalIframe" src="" title="Education Document" style="display:none;"></iframe>
+      </div>
+      <div class="edu-modal-footer">
+        <a id="eduDownloadBtn" href="#" target="_blank" download><i class="fas fa-download"></i> Download</a>
+        <a id="eduOpenBtn" href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Open in New Tab</a>
+        <span class="edu-modal-year" id="eduModalYear"></span>
+      </div>
     </div>
   </div>
-</div>
 
   <script src="./script/scirpt.js"></script>
   <script src="./script/ai-chat.js"></script>

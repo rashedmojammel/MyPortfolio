@@ -483,5 +483,25 @@ document.addEventListener('keydown', function(e) {
 
   startTimer();
 })();
+/* ── Door Loader ── */
+(function () {
+  const loader = document.getElementById('loader');
+  const bloom  = document.getElementById('loader-bloom');
+  if (!loader) return;
 
+  // After progress fills (~1.8s), swing doors open
+  setTimeout(() => {
+    loader.classList.add('open');
 
+    // Brief gold bloom flash
+    if (bloom) {
+      setTimeout(() => bloom.style.opacity = '0', 400);
+    }
+
+    // Hide loader completely after doors finish swinging
+    setTimeout(() => {
+      loader.classList.add('hidden');
+    }, 1700);
+
+  }, 1800);
+})();
